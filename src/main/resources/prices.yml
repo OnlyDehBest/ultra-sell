@@ -1,0 +1,2045 @@
+# Format: MATERIAL_NAME: price-per-unit
+
+COOKED_BEEF:
+  price-per-unit: 4
+VINE:
+  price-per-unit: 0.1
+WHEAT:
+  price-per-unit: 3
+BEETROOT:
+  price-per-unit: 0.2
+CARROT:
+  price-per-unit: 1
+POTATO:
+  price-per-unit: 1
+POISONOUS_POTATO:
+  price-per-unit: 4
+MELON:
+  price-per-unit: 4
+PUMPKIN:
+  price-per-unit: 4
+BAMBOO:
+  price-per-unit: 0.5
+COCOA_BEANS:
+  price-per-unit: 0.5
+CACTUS:
+  price-per-unit: 3
+SWEET_BERRIES:
+  price-per-unit: 0.5
+SUGAR_CANE:
+  price-per-unit: 2.5
+RED_MUSHROOM:
+  price-per-unit: 0.5
+BROWN_MUSHROOM:
+  price-per-unit: 0.5
+KELP:
+  price-per-unit: 0.4
+SEA_PICKLE:
+  price-per-unit: 4
+GLOW_BERRIES:
+  price-per-unit: 0.5
+WHEAT_SEEDS:
+  price-per-unit: 0.5
+PUMPKIN_SEEDS:
+  price-per-unit: 0.5
+MELON_SEEDS:
+  price-per-unit: 0.5
+BEETROOT_SEEDS:
+  price-per-unit: 0.5
+TORCHFLOWER_SEEDS:
+  price-per-unit: 0.5
+TORCHFLOWER:
+  price-per-unit: 4
+NETHER_WART:
+  price-per-unit: 1
+SPRUCE_SAPLING:
+  price-per-unit: 0.2
+TWISTING_VINES:
+  price-per-unit: 0.2
+NETHER_SPROUTS:
+  price-per-unit: 0.2
+CRIMSON_FUNGUS:
+  price-per-unit: 0.2
+JUNGLE_SAPLING:
+  price-per-unit: 0.2
+BIRCH_SAPLING:
+  price-per-unit: 0.2
+OAK_SAPLING:
+  price-per-unit: 0.2
+CHERRY_SAPLING:
+  price-per-unit: 0.1
+DARK_OAK_SAPLING:
+  price-per-unit: 0.2
+ACACIA_SAPLING:
+  price-per-unit: 0.2
+WARPED_FUNGUS:
+  price-per-unit: 0.2
+HANGING_ROOTS:
+  price-per-unit: 0.5
+CRIMSON_ROOTS:
+  price-per-unit: 0.2
+WARPED_ROOTS:
+  price-per-unit: 0.2
+AZALEA:
+  price-per-unit: 0.5
+FLOWERING_AZALEA:
+  price-per-unit: 3
+WEEPING_VINES:
+  price-per-unit: 0.2
+CHORUS_FLOWER:
+  price-per-unit: 0.1
+CHORUS_FRUIT:
+  price-per-unit: 0.1
+BIG_DRIPLEAF:
+  price-per-unit: 0.5
+SMALL_DRIPLEAF:
+  price-per-unit: 0.2
+COAL_ORE:
+  price-per-unit: 2
+DEEPSLATE_COAL_ORE:
+  price-per-unit: 2
+IRON_ORE:
+  price-per-unit: 3
+DEEPSLATE_IRON_ORE:
+  price-per-unit: 3
+COPPER_ORE:
+  price-per-unit: 2.5
+DEEPSLATE_COPPER_ORE:
+  price-per-unit: 2.5
+GOLD_ORE:
+  price-per-unit: 6
+DEEPSLATE_GOLD_ORE:
+  price-per-unit: 10
+REDSTONE_ORE:
+  price-per-unit: 2
+DEEPSLATE_REDSTONE_ORE:
+  price-per-unit: 2
+EMERALD_ORE:
+  price-per-unit: 5
+DEEPSLATE_EMERALD_ORE:
+  price-per-unit: 4
+LAPIS_ORE:
+  price-per-unit: 2
+DEEPSLATE_LAPIS_ORE:
+  price-per-unit: 2
+DEEPSLATE_DIAMOND_ORE:
+  price-per-unit: 50
+NETHER_GOLD_ORE:
+  price-per-unit: 5
+NETHER_QUARTZ_ORE:
+  price-per-unit: 3
+DIAMOND_ORE:
+  price-per-unit: 75
+DIAMOND_BLOCK:
+  price-per-unit: 680
+NETHERITE_BLOCK:
+  price-per-unit: 1000
+EMERALD_BLOCK:
+  price-per-unit: 45
+REDSTONE_BLOCK:
+  price-per-unit: 1
+IRON_BLOCK:
+  price-per-unit: 30
+LAPIS_BLOCK:
+  price-per-unit: 9
+GOLD_BLOCK:
+  price-per-unit: 45
+COPPER_BLOCK:
+  price-per-unit: 5
+CHARCOAL:
+  price-per-unit: 1
+COAL:
+  price-per-unit: 1
+RAW_IRON:
+  price-per-unit: 3
+RAW_GOLD:
+  price-per-unit: 5
+DIAMOND:
+  price-per-unit: 20
+QUARTZ:
+  price-per-unit: 5
+RAW_COPPER:
+  price-per-unit: 1.25
+IRON_INGOT:
+  price-per-unit: 5
+GOLD_INGOT:
+  price-per-unit: 5
+NETHERITE_INGOT:
+  price-per-unit: 200
+AMETHYST_CLUSTER:
+  price-per-unit: 0.2
+LARGE_AMETHYST_BUD:
+  price-per-unit: 0.3
+MEDIUM_AMETHYST_BUD:
+  price-per-unit: 0.2
+SMALL_AMETHYST_BUD:
+  price-per-unit: 0.1
+AMETHYST_SHARD:
+  price-per-unit: 0.1
+ECHO_SHARD:
+  price-per-unit: 5
+CLAY:
+  price-per-unit: 1
+LAPIS_LAZULI:
+  price-per-unit: 0.5
+IRON_NUGGET:
+  price-per-unit: 0.5
+GOLD_NUGGET:
+  price-per-unit: 0.5
+ANCIENT_DEBRIS:
+  price-per-unit: 150
+NETHERITE_SCRAP:
+  price-per-unit: 25
+GLOWSTONE_DUST:
+  price-per-unit: 0.5
+REDSTONE:
+  price-per-unit: 0.5
+BRICK:
+  price-per-unit: 2
+FEATHER:
+  price-per-unit: 0.5
+STRING:
+  price-per-unit: 0.5
+COOKED_CHICKEN:
+  price-per-unit: 1
+CHICKEN:
+  price-per-unit: 0.5
+GLOW_INK_SAC:
+  price-per-unit: 0.5
+BEEF:
+  price-per-unit: 0.5
+LEATHER:
+  price-per-unit: 1
+COOKED_COD:
+  price-per-unit: 0.2
+COD:
+  price-per-unit: 0.2
+PORKCHOP:
+  price-per-unit: 0.2
+COOKED_PORKCHOP:
+  price-per-unit: 0.2
+PUFFERFISH:
+  price-per-unit: 0.2
+RABBIT_HIDE:
+  price-per-unit: 5
+COOKED_RABBIT:
+  price-per-unit: 1
+RABBIT:
+  price-per-unit: 0.5
+COOKED_SALMON:
+  price-per-unit: 0.2
+SALMON:
+  price-per-unit: 0.2
+MUTTON:
+  price-per-unit: 0.2
+COOKED_MUTTON:
+  price-per-unit: 0.5
+SNOWBALL:
+  price-per-unit: 0.1
+INK_SAC:
+  price-per-unit: 0.5
+TROPICAL_FISH:
+  price-per-unit: 0.2
+SEAGRASS:
+  price-per-unit: 0.2
+BOWL:
+  price-per-unit: 0.5
+ROTTEN_FLESH:
+  price-per-unit: 1
+SPIDER_EYE:
+  price-per-unit: 0.5
+ENDER_PEARL:
+  price-per-unit: 2
+POPPY:
+  price-per-unit: 0.1
+BLAZE_ROD:
+  price-per-unit: 2
+PRISMARINE_SHARD:
+  price-per-unit: 0.2
+PRISMARINE_CRYSTALS:
+  price-per-unit: 0.2
+WET_SPONGE:
+  price-per-unit: 100
+TOTEM_OF_UNDYING:
+  price-per-unit: 50
+EMERALD:
+  price-per-unit: 3
+GHAST_TEAR:
+  price-per-unit: 10
+GUNPOWDER:
+  price-per-unit: 1
+MAGMA_CREAM:
+  price-per-unit: 0.2
+PHANTOM_MEMBRANE:
+  price-per-unit: 1
+SADDLE:
+  price-per-unit: 10
+SHULKER_SHELL:
+  price-per-unit: 50
+SLIME_BALL:
+  price-per-unit: 5
+BAKED_POTATO:
+  price-per-unit: 3.0
+FISHING_ROD:
+  price-per-unit: 3
+OAK_LOG:
+  price-per-unit: 1
+SPRUCE_LOG:
+  price-per-unit: 1
+BIRCH_LOG:
+  price-per-unit: 1
+JUNGLE_LOG:
+  price-per-unit: 1
+ACACIA_LOG:
+  price-per-unit: 1
+DARK_OAK_LOG:
+  price-per-unit: 1
+CRIMSON_STEM:
+  price-per-unit: 1
+WARPED_STEM:
+  price-per-unit: 1
+STRIPPED_OAK_LOG:
+  price-per-unit: 1
+STRIPPED_SPRUCE_LOG:
+  price-per-unit: 1
+STRIPPED_BIRCH_LOG:
+  price-per-unit: 1
+STRIPPED_JUNGLE_LOG:
+  price-per-unit: 1
+STRIPPED_ACACIA_LOG:
+  price-per-unit: 1
+STRIPPED_DARK_OAK_LOG:
+  price-per-unit: 1
+STRIPPED_CRIMSON_STEM:
+  price-per-unit: 1
+STRIPPED_WARPED_STEM:
+  price-per-unit: 1
+OAK_WOOD:
+  price-per-unit: 1
+BIRCH_WOOD:
+  price-per-unit: 1
+JUNGLE_WOOD:
+  price-per-unit: 1
+ACACIA_WOOD:
+  price-per-unit: 1
+DARK_OAK_WOOD:
+  price-per-unit: 1
+CRIMSON_HYPHAE:
+  price-per-unit: 1
+WARPED_HYPHAE:
+  price-per-unit: 1
+STRIPPED_OAK_WOOD:
+  price-per-unit: 1
+STRIPPED_SPRUCE_WOOD:
+  price-per-unit: 1
+STRIPPED_BIRCH_WOOD:
+  price-per-unit: 1
+STRIPPED_JUNGLE_WOOD:
+  price-per-unit: 1
+STRIPPED_ACACIA_WOOD:
+  price-per-unit: 1
+STRIPPED_DARK_OAK_WOOD:
+  price-per-unit: 1
+STRIPPED_CRIMSON_HYPHAE:
+  price-per-unit: 1
+STRIPPED_WARPED_HYPHAE:
+  price-per-unit: 1
+OAK_LEAVES:
+  price-per-unit: 0.1
+SPRUCE_LEAVES:
+  price-per-unit: 0.1
+BIRCH_LEAVES:
+  price-per-unit: 0.1
+JUNGLE_LEAVES:
+  price-per-unit: 0.1
+ACACIA_LEAVES:
+  price-per-unit: 0.1
+DARK_OAK_LEAVES:
+  price-per-unit: 0.1
+NETHER_WART_BLOCK:
+  price-per-unit: 0.1
+WARPED_WART_BLOCK:
+  price-per-unit: 0.1
+GRASS_BLOCK:
+  price-per-unit: 0.1
+FERN:
+  price-per-unit: 0.5
+DEAD_BUSH:
+  price-per-unit: 0.1
+DANDELION:
+  price-per-unit: 0.1
+BLUE_ORCHID:
+  price-per-unit: 0.1
+PINK_PETALS:
+  price-per-unit: 0.3
+ALLIUM:
+  price-per-unit: 0.1
+AZURE_BLUET:
+  price-per-unit: 0.1
+RED_TULIP:
+  price-per-unit: 0.1
+ORANGE_TULIP:
+  price-per-unit: 0.1
+WHITE_TULIP:
+  price-per-unit: 0.1
+PINK_TULIP:
+  price-per-unit: 0.1
+OXEYE_DAISY:
+  price-per-unit: 0.1
+CORNFLOWER:
+  price-per-unit: 0.1
+AZALEA_LEAVES:
+  price-per-unit: 0.1
+FLOWERING_AZALEA_LEAVES:
+  price-per-unit: 0.5
+CHERRY_LEAVES:
+  price-per-unit: 0.1
+MANGROVE_LEAVES:
+  price-per-unit: 0.1
+LILY_OF_THE_VALLEY:
+  price-per-unit: 0.1
+WITHER_ROSE:
+  price-per-unit: 0.1
+SUNFLOWER:
+  price-per-unit: 0.1
+LILAC:
+  price-per-unit: 0.1
+ROSE_BUSH:
+  price-per-unit: 0.1
+PEONY:
+  price-per-unit: 0.1
+MANGROVE_PROPAGULE:
+  price-per-unit: 0.1
+GOAT_HORN:
+  price-per-unit: 0.1
+FROGSPAWN:
+  price-per-unit: 10
+OCHRE_FROGLIGHT:
+  price-per-unit: 1
+PEARLESCENT_FROGLIGHT:
+  price-per-unit: 1
+VERDANT_FROGLIGHT:
+  price-per-unit: 1
+BLACK_DYE:
+  price-per-unit: 0.1
+BLUE_DYE:
+  price-per-unit: 0.1
+BROWN_DYE:
+  price-per-unit: 0.1
+LIGHT_BLUE_DYE:
+  price-per-unit: 0.1
+GRAY_DYE:
+  price-per-unit: 0.1
+CYAN_DYE:
+  price-per-unit: 0.1
+GREEN_DYE:
+  price-per-unit: 0.1
+LIGHT_GRAY_DYE:
+  price-per-unit: 0.1
+YELLOW_DYE:
+  price-per-unit: 0.1
+WHITE_DYE:
+  price-per-unit: 0.1
+RED_DYE:
+  price-per-unit: 0.1
+PURPLE_DYE:
+  price-per-unit: 0.1
+PINK_DYE:
+  price-per-unit: 0.1
+ORANGE_DYE:
+  price-per-unit: 0.1
+MAGENTA_DYE:
+  price-per-unit: 0.1
+LIME_DYE:
+  price-per-unit: 0.1
+LARGE_FERN:
+  price-per-unit: 0.1
+SPORE_BLOSSOM:
+  price-per-unit: 0.1
+BRAIN_CORAL:
+  price-per-unit: 1
+BUBBLE_CORAL:
+  price-per-unit: 1
+FIRE_CORAL:
+  price-per-unit: 1
+HORN_CORAL:
+  price-per-unit: 1
+TUBE_CORAL:
+  price-per-unit: 1
+BRAIN_CORAL_FAN:
+  price-per-unit: 1
+BUBBLE_CORAL_FAN:
+  price-per-unit: 1
+FIRE_CORAL_FAN:
+  price-per-unit: 1
+HORN_CORAL_FAN:
+  price-per-unit: 1
+TUBE_CORAL_FAN:
+  price-per-unit: 1
+DEAD_BRAIN_CORAL:
+  price-per-unit: 1
+DEAD_BUBBLE_CORAL:
+  price-per-unit: 1
+DEAD_FIRE_CORAL:
+  price-per-unit: 1
+DEAD_HORN_CORAL:
+  price-per-unit: 1
+DEAD_TUBE_CORAL:
+  price-per-unit: 1
+DEAD_BRAIN_CORAL_FAN:
+  price-per-unit: 1
+DEAD_BUBBLE_CORAL_FAN:
+  price-per-unit: 1
+DEAD_FIRE_CORAL_FAN:
+  price-per-unit: 1
+DEAD_HORN_CORAL_FAN:
+  price-per-unit: 1
+DEAD_TUBE_CORAL_FAN:
+  price-per-unit: 1
+SEA_LANTERN:
+  price-per-unit: 5
+SHROOMLIGHT:
+  price-per-unit: 0.5
+HONEYCOMB_BLOCK:
+  price-per-unit: 5
+CHORUS_PLANT:
+  price-per-unit: 0.1
+DIAMOND_SHOVEL:
+  price-per-unit: 25
+TIPPED_ARROW:
+  price-per-unit: 5
+DIAMOND_PICKAXE:
+  price-per-unit: 25
+DIAMOND_AXE:
+  price-per-unit: 25
+DIAMOND_HOE:
+  price-per-unit: 25
+DIAMOND_SWORD:
+  price-per-unit: 25
+DIAMOND_HELMET:
+  price-per-unit: 30
+DIAMOND_CHESTPLATE:
+  price-per-unit: 25
+DIAMOND_LEGGINGS:
+  price-per-unit: 25
+DIAMOND_BOOTS:
+  price-per-unit: 25
+CHAINMAIL_HELMET:
+  price-per-unit: 10
+CHAINMAIL_CHESTPLATE:
+  price-per-unit: 10
+CHAINMAIL_LEGGINGS:
+  price-per-unit: 10
+CHAINMAIL_BOOTS:
+  price-per-unit: 10
+LEATHER_HORSE_ARMOR:
+  price-per-unit: 10
+IRON_HORSE_ARMOR:
+  price-per-unit: 100
+GOLDEN_HORSE_ARMOR:
+  price-per-unit: 300
+DIAMOND_HORSE_ARMOR:
+  price-per-unit: 500
+IRON_SHOVEL:
+  price-per-unit: 5
+IRON_PICKAXE:
+  price-per-unit: 5
+IRON_AXE:
+  price-per-unit: 5
+IRON_HOE:
+  price-per-unit: 5
+IRON_SWORD:
+  price-per-unit: 5
+IRON_HELMET:
+  price-per-unit: 25
+IRON_CHESTPLATE:
+  price-per-unit: 35
+IRON_LEGGINGS:
+  price-per-unit: 30
+IRON_BOOTS:
+  price-per-unit: 20
+NETHERITE_SHOVEL:
+  price-per-unit: 100
+NETHERITE_PICKAXE:
+  price-per-unit: 300
+NETHERITE_AXE:
+  price-per-unit: 300
+NETHERITE_HOE:
+  price-per-unit: 200
+NETHERITE_SWORD:
+  price-per-unit: 200
+NETHERITE_HELMET:
+  price-per-unit: 1100
+NETHERITE_CHESTPLATE:
+  price-per-unit: 1100
+NETHERITE_LEGGINGS:
+  price-per-unit: 1100
+NETHERITE_BOOTS:
+  price-per-unit: 1100
+GOLDEN_SHOVEL:
+  price-per-unit: 5
+GOLDEN_PICKAXE:
+  price-per-unit: 15
+GOLDEN_AXE:
+  price-per-unit: 15
+GOLDEN_SWORD:
+  price-per-unit: 10
+GOLDEN_HOE:
+  price-per-unit: 5
+GOLDEN_HELMET:
+  price-per-unit: 30
+GOLDEN_CHESTPLATE:
+  price-per-unit: 48
+GOLDEN_LEGGINGS:
+  price-per-unit: 42
+GOLDEN_BOOTS:
+  price-per-unit: 24
+BOW:
+  price-per-unit: 3
+CROSSBOW:
+  price-per-unit: 5
+LEAD:
+  price-per-unit: 5
+COMPASS:
+  price-per-unit: 9
+RECOVERY_COMPASS:
+  price-per-unit: 5
+SHEARS:
+  price-per-unit: 4
+BRUSH:
+  price-per-unit: 3
+FLINT_AND_STEEL:
+  price-per-unit: 2
+ELYTRA:
+  price-per-unit: 5000
+FIREWORK_ROCKET:
+  price-per-unit: 3
+CLOCK:
+  price-per-unit: 25
+SPYGLASS:
+  price-per-unit: 5
+WOODEN_SHOVEL:
+  price-per-unit: 0.3
+WOODEN_PICKAXE:
+  price-per-unit: 0.5
+WOODEN_AXE:
+  price-per-unit: 0.5
+WOODEN_HOE:
+  price-per-unit: 0.2
+WOODEN_SWORD:
+  price-per-unit: 0.3
+STONE_SHOVEL:
+  price-per-unit: 0.3
+STONE_PICKAXE:
+  price-per-unit: 0.5
+STONE_AXE:
+  price-per-unit: 0.5
+STONE_HOE:
+  price-per-unit: 0.2
+STONE_SWORD:
+  price-per-unit: 0.3
+LEATHER_BOOTS:
+  price-per-unit: 0.3
+LEATHER_LEGGINGS:
+  price-per-unit: 0.3
+LEATHER_CHESTPLATE:
+  price-per-unit: 0.3
+LEATHER_HELMET:
+  price-per-unit: 0.3
+TURTLE_HELMET:
+  price-per-unit: 50
+TRIDENT:
+  price-per-unit: 250
+ARMOR_STAND:
+  price-per-unit: 3
+BUCKET:
+  price-per-unit: 6
+MILK_BUCKET:
+  price-per-unit: 6
+POWDER_SNOW_BUCKET:
+  price-per-unit: 5
+LAVA_BUCKET:
+  price-per-unit: 5
+WATER_BUCKET:
+  price-per-unit: 6
+SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+DUNE_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+EYE_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+HOST_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+RAISER_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+RIB_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+TIDE_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+VEX_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+WARD_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+WILD_ARMOR_TRIM_SMITHING_TEMPLATE:
+  price-per-unit: 50
+NETHERITE_UPGRADE_SMITHING_TEMPLATE:
+  price-per-unit: 50
+TROPICAL_FISH_BUCKET:
+  price-per-unit: 5
+PUFFERFISH_BUCKET:
+  price-per-unit: 5
+COD_BUCKET:
+  price-per-unit: 5
+SALMON_BUCKET:
+  price-per-unit: 5
+NAME_TAG:
+  price-per-unit: 20
+NAUTILUS_SHELL:
+  price-per-unit: 100
+LILY_PAD:
+  price-per-unit: 0.5
+AXOLOTL_BUCKET:
+  price-per-unit: 5
+TADPOLE_BUCKET:
+  price-per-unit: 5
+HEART_OF_THE_SEA:
+  price-per-unit: 100
+ENCHANTED_BOOK:
+  price-per-unit: 20
+BREWING_STAND:
+  price-per-unit: 1
+POTION:
+  price-per-unit: 3.5
+LINGERING_POTION:
+  price-per-unit: 10
+SPLASH_POTION:
+  price-per-unit: 10
+DIRT:
+  price-per-unit: 1
+STONE:
+  price-per-unit: 0.1
+GRANITE:
+  price-per-unit: 0.2
+POLISHED_GRANITE:
+  price-per-unit: 0.2
+DIORITE:
+  price-per-unit: 0.2
+POLISHED_DIORITE:
+  price-per-unit: 0.2
+ANDESITE:
+  price-per-unit: 0.2
+POLISHED_ANDESITE:
+  price-per-unit: 0.2
+DEEPSLATE:
+  price-per-unit: 0.2
+COBBLED_DEEPSLATE:
+  price-per-unit: 0.2
+POLISHED_DEEPSLATE:
+  price-per-unit: 0.2
+CALCITE:
+  price-per-unit: 0.5
+TUFF:
+  price-per-unit: 0.2
+DRIPSTONE_BLOCK:
+  price-per-unit: 0.2
+COARSE_DIRT:
+  price-per-unit: 0.1
+PODZOL:
+  price-per-unit: 0.5
+ROOTED_DIRT:
+  price-per-unit: 5
+MUD:
+  price-per-unit: 0.2
+CRIMSON_NYLIUM:
+  price-per-unit: 0.1
+WARPED_NYLIUM:
+  price-per-unit: 0.1
+COBBLESTONE:
+  price-per-unit: 0.1
+OAK_PLANKS:
+  price-per-unit: 0.2
+SPRUCE_PLANKS:
+  price-per-unit: 0.2
+BIRCH_PLANKS:
+  price-per-unit: 0.2
+JUNGLE_PLANKS:
+  price-per-unit: 0.2
+ACACIA_PLANKS:
+  price-per-unit: 0.2
+CHERRY_PLANKS:
+  price-per-unit: 0.2
+DARK_OAK_PLANKS:
+  price-per-unit: 0.2
+MANGROVE_PLANKS:
+  price-per-unit: 0.2
+BAMBOO_PLANKS:
+  price-per-unit: 0.2
+CRIMSON_PLANKS:
+  price-per-unit: 0.2
+WARPED_PLANKS:
+  price-per-unit: 0.2
+BAMBOO_MOSAIC:
+  price-per-unit: 0.2
+SAND:
+  price-per-unit: 0.1
+SUSPICIOUS_SAND:
+  price-per-unit: 0.1
+SUSPICIOUS_GRAVEL:
+  price-per-unit: 0.1
+RED_SAND:
+  price-per-unit: 0.5
+GRAVEL:
+  price-per-unit: 0.1
+COAL_BLOCK:
+  price-per-unit: 20
+RAW_IRON_BLOCK:
+  price-per-unit: 18
+RAW_COPPER_BLOCK:
+  price-per-unit: 5
+RAW_GOLD_BLOCK:
+  price-per-unit: 45
+AMETHYST_BLOCK:
+  price-per-unit: 0.5
+BUDDING_AMETHYST:
+  price-per-unit: 1
+EXPOSED_COPPER:
+  price-per-unit: 5
+WEATHERED_COPPER:
+  price-per-unit: 5
+OXIDIZED_COPPER:
+  price-per-unit: 5
+CUT_COPPER:
+  price-per-unit: 5
+EXPOSED_CUT_COPPER:
+  price-per-unit: 5
+WEATHERED_CUT_COPPER:
+  price-per-unit: 5
+OXIDIZED_CUT_COPPER:
+  price-per-unit: 5
+CUT_COPPER_STAIRS:
+  price-per-unit: 5
+EXPOSED_CUT_COPPER_STAIRS:
+  price-per-unit: 7
+WEATHERED_CUT_COPPER_STAIRS:
+  price-per-unit: 7
+OXIDIZED_CUT_COPPER_STAIRS:
+  price-per-unit: 7
+CUT_COPPER_SLAB:
+  price-per-unit: 2
+EXPOSED_CUT_COPPER_SLAB:
+  price-per-unit: 2
+WEATHERED_CUT_COPPER_SLAB:
+  price-per-unit: 2
+OXIDIZED_CUT_COPPER_SLAB:
+  price-per-unit: 2
+WAXED_COPPER_BLOCK:
+  price-per-unit: 5
+WAXED_EXPOSED_COPPER:
+  price-per-unit: 5
+WAXED_WEATHERED_COPPER:
+  price-per-unit: 5
+WAXED_OXIDIZED_COPPER:
+  price-per-unit: 5
+WAXED_CUT_COPPER:
+  price-per-unit: 5
+WAXED_EXPOSED_CUT_COPPER:
+  price-per-unit: 5
+WAXED_WEATHERED_CUT_COPPER:
+  price-per-unit: 5
+WAXED_OXIDIZED_CUT_COPPER:
+  price-per-unit: 5
+WAXED_CUT_COPPER_STAIRS:
+  price-per-unit: 7
+WAXED_EXPOSED_CUT_COPPER_STAIRS:
+  price-per-unit: 7
+WAXED_WEATHERED_CUT_COPPER_STAIRS:
+  price-per-unit: 7
+WAXED_OXIDIZED_CUT_COPPER_STAIRS:
+  price-per-unit: 7
+WAXED_CUT_COPPER_SLAB:
+  price-per-unit: 2
+WAXED_EXPOSED_CUT_COPPER_SLAB:
+  price-per-unit: 2
+WAXED_WEATHERED_CUT_COPPER_SLAB:
+  price-per-unit: 2
+WAXED_OXIDIZED_CUT_COPPER_SLAB:
+  price-per-unit: 2
+CHERRY_LOG:
+  price-per-unit: 1
+MANGROVE_LOG:
+  price-per-unit: 0.3
+MANGROVE_ROOTS:
+  price-per-unit: 0.1
+MUDDY_MANGROVE_ROOTS:
+  price-per-unit: 0.2
+STRIPPED_CHERRY_LOG:
+  price-per-unit: 1
+STRIPPED_MANGROVE_LOG:
+  price-per-unit: 0.3
+STRIPPED_CHERRY_WOOD:
+  price-per-unit: 1
+STRIPPED_MANGROVE_WOOD:
+  price-per-unit: 0.2
+STRIPPED_BAMBOO_BLOCK:
+  price-per-unit: 1
+CHERRY_WOOD:
+  price-per-unit: 1
+MANGROVE_WOOD:
+  price-per-unit: 0.2
+SPONGE:
+  price-per-unit: 15
+GLASS:
+  price-per-unit: 0.5
+TINTED_GLASS:
+  price-per-unit: 0.2
+SANDSTONE:
+  price-per-unit: 0.2
+CHISELED_SANDSTONE:
+  price-per-unit: 0.2
+CUT_SANDSTONE:
+  price-per-unit: 0.2
+COBWEB:
+  price-per-unit: 3
+WHITE_WOOL:
+  price-per-unit: 1
+ORANGE_WOOL:
+  price-per-unit: 1
+MAGENTA_WOOL:
+  price-per-unit: 1
+LIGHT_BLUE_WOOL:
+  price-per-unit: 1
+YELLOW_WOOL:
+  price-per-unit: 1
+LIME_WOOL:
+  price-per-unit: 1
+PINK_WOOL:
+  price-per-unit: 1
+GRAY_WOOL:
+  price-per-unit: 1
+LIGHT_GRAY_WOOL:
+  price-per-unit: 1
+CYAN_WOOL:
+  price-per-unit: 1
+PURPLE_WOOL:
+  price-per-unit: 1
+BLUE_WOOL:
+  price-per-unit: 1
+BROWN_WOOL:
+  price-per-unit: 1
+GREEN_WOOL:
+  price-per-unit: 1
+RED_WOOL:
+  price-per-unit: 1
+BLACK_WOOL:
+  price-per-unit: 1
+MOSS_CARPET:
+  price-per-unit: 0.2
+MOSS_BLOCK:
+  price-per-unit: 0.2
+OAK_SLAB:
+  price-per-unit: 0.2
+SPRUCE_SLAB:
+  price-per-unit: 0.2
+BIRCH_SLAB:
+  price-per-unit: 0.2
+JUNGLE_SLAB:
+  price-per-unit: 0.2
+ACACIA_SLAB:
+  price-per-unit: 0.2
+CHERRY_SLAB:
+  price-per-unit: 0.2
+DARK_OAK_SLAB:
+  price-per-unit: 0.2
+MANGROVE_SLAB:
+  price-per-unit: 0.2
+BAMBOO_SLAB:
+  price-per-unit: 0.2
+BAMBOO_MOSAIC_SLAB:
+  price-per-unit: 0.2
+CRIMSON_SLAB:
+  price-per-unit: 0.2
+WARPED_SLAB:
+  price-per-unit: 0.2
+STONE_SLAB:
+  price-per-unit: 0.2
+SANDSTONE_SLAB:
+  price-per-unit: 0.2
+CUT_SANDSTONE_SLAB:
+  price-per-unit: 0.2
+PETRIFIED_OAK_SLAB:
+  price-per-unit: 0.2
+COBBLESTONE_SLAB:
+  price-per-unit: 0.2
+BRICK_SLAB:
+  price-per-unit: 0.2
+STONE_BRICK_SLAB:
+  price-per-unit: 0.2
+MUD_BRICK_SLAB:
+  price-per-unit: 0.2
+NETHER_BRICK_SLAB:
+  price-per-unit: 0.2
+QUARTZ_SLAB:
+  price-per-unit: 0.2
+RED_SANDSTONE_SLAB:
+  price-per-unit: 0.2
+CUT_RED_SANDSTONE_SLAB:
+  price-per-unit: 0.2
+PURPUR_SLAB:
+  price-per-unit: 0.2
+PRISMARINE_SLAB:
+  price-per-unit: 0.2
+PRISMARINE_BRICK_SLAB:
+  price-per-unit: 0.2
+DARK_PRISMARINE_SLAB:
+  price-per-unit: 0.2
+SMOOTH_QUARTZ:
+  price-per-unit: 0.2
+SMOOTH_RED_SANDSTONE:
+  price-per-unit: 0.2
+SMOOTH_SANDSTONE:
+  price-per-unit: 0.2
+SMOOTH_STONE:
+  price-per-unit: 0.2
+BRICKS:
+  price-per-unit: 5
+BOOKSHELF:
+  price-per-unit: 10
+CHISELED_BOOKSHELF:
+  price-per-unit: 10
+MOSSY_COBBLESTONE:
+  price-per-unit: 0.2
+OBSIDIAN:
+  price-per-unit: 10
+TORCH:
+  price-per-unit: 0.2
+END_ROD:
+  price-per-unit: 3
+PURPUR_BLOCK:
+  price-per-unit: 0.2
+PURPUR_PILLAR:
+  price-per-unit: 0.2
+PURPUR_STAIRS:
+  price-per-unit: 0.2
+CHEST:
+  price-per-unit: 1
+CRAFTING_TABLE:
+  price-per-unit: 1
+FURNACE:
+  price-per-unit: 0.2
+LADDER:
+  price-per-unit: 0.2
+COBBLESTONE_STAIRS:
+  price-per-unit: 0.2
+SNOW:
+  price-per-unit: 0.2
+ICE:
+  price-per-unit: 0.2
+SNOW_BLOCK:
+  price-per-unit: 0.2
+JUKEBOX:
+  price-per-unit: 100
+OAK_FENCE:
+  price-per-unit: 0.2
+SPRUCE_FENCE:
+  price-per-unit: 0.2
+BIRCH_FENCE:
+  price-per-unit: 0.2
+JUNGLE_FENCE:
+  price-per-unit: 0.2
+ACACIA_FENCE:
+  price-per-unit: 0.2
+CHERRY_FENCE:
+  price-per-unit: 0.2
+DARK_OAK_FENCE:
+  price-per-unit: 0.2
+MANGROVE_FENCE:
+  price-per-unit: 0.2
+BAMBOO_FENCE:
+  price-per-unit: 0.2
+CRIMSON_FENCE:
+  price-per-unit: 0.2
+CARVED_PUMPKIN:
+  price-per-unit: 1
+JACK_O_LANTERN:
+  price-per-unit: 0.2
+NETHERRACK:
+  price-per-unit: 0.2
+SOUL_SAND:
+  price-per-unit: 0.2
+SOUL_SOIL:
+  price-per-unit: 0.2
+BASALT:
+  price-per-unit: 0.2
+POLISHED_BASALT:
+  price-per-unit: 0.2
+SMOOTH_BASALT:
+  price-per-unit: 0.2
+SOUL_TORCH:
+  price-per-unit: 0.2
+GLOWSTONE:
+  price-per-unit: 0.2
+INFESTED_STONE:
+  price-per-unit: 0.2
+INFESTED_COBBLESTONE:
+  price-per-unit: 0.2
+STONE_BRICKS:
+  price-per-unit: 0.2
+MOSSY_STONE_BRICKS:
+  price-per-unit: 0.2
+CRACKED_STONE_BRICKS:
+  price-per-unit: 0.2
+CHISELED_STONE_BRICKS:
+  price-per-unit: 0.2
+PACKED_MUD:
+  price-per-unit: 0.2
+MUD_BRICKS:
+  price-per-unit: 0.2
+DEEPSLATE_BRICKS:
+  price-per-unit: 0.2
+CRACKED_DEEPSLATE_BRICKS:
+  price-per-unit: 0.2
+DEEPSLATE_TILES:
+  price-per-unit: 0.2
+CRACKED_DEEPSLATE_TILES:
+  price-per-unit: 0.2
+CHISELED_DEEPSLATE:
+  price-per-unit: 0.2
+REINFORCED_DEEPSLATE:
+  price-per-unit: 0.2
+BROWN_MUSHROOM_BLOCK:
+  price-per-unit: 1
+RED_MUSHROOM_BLOCK:
+  price-per-unit: 1
+MUSHROOM_STEM:
+  price-per-unit: 1
+IRON_BARS:
+  price-per-unit: 0.2
+CHAIN:
+  price-per-unit: 0.2
+GLASS_PANE:
+  price-per-unit: 0.2
+GLOW_LICHEN:
+  price-per-unit: 0.2
+BRICK_STAIRS:
+  price-per-unit: 0.2
+STONE_BRICK_STAIRS:
+  price-per-unit: 0.2
+MUD_BRICK_STAIRS:
+  price-per-unit: 0.2
+MYCELIUM:
+  price-per-unit: 5
+NETHER_BRICKS:
+  price-per-unit: 0.2
+CRACKED_NETHER_BRICKS:
+  price-per-unit: 0.2
+CHISELED_NETHER_BRICKS:
+  price-per-unit: 0.2
+NETHER_BRICK_STAIRS:
+  price-per-unit: 0.2
+SCULK:
+  price-per-unit: 0.2
+SCULK_VEIN:
+  price-per-unit: 0.2
+SCULK_CATALYST:
+  price-per-unit: 20
+SCULK_SHRIEKER:
+  price-per-unit: 0.2
+ENCHANTING_TABLE:
+  price-per-unit: 250
+END_STONE:
+  price-per-unit: 0.2
+END_STONE_BRICKS:
+  price-per-unit: 0.2
+DRAGON_EGG:
+  price-per-unit: 50000
+SANDSTONE_STAIRS:
+  price-per-unit: 0.2
+ENDER_CHEST:
+  price-per-unit: 50
+OAK_STAIRS:
+  price-per-unit: 0.2
+SPRUCE_STAIRS:
+  price-per-unit: 0.2
+BIRCH_STAIRS:
+  price-per-unit: 0.2
+JUNGLE_STAIRS:
+  price-per-unit: 0.2
+ACACIA_STAIRS:
+  price-per-unit: 0.2
+CHERRY_STAIRS:
+  price-per-unit: 0.2
+DARK_OAK_STAIRS:
+  price-per-unit: 0.2
+MANGROVE_STAIRS:
+  price-per-unit: 0.2
+BAMBOO_STAIRS:
+  price-per-unit: 0.2
+BAMBOO_MOSAIC_STAIRS:
+  price-per-unit: 0.2
+CRIMSON_STAIRS:
+  price-per-unit: 0.2
+WARPED_STAIRS:
+  price-per-unit: 0.2
+BEACON:
+  price-per-unit: 750
+ANVIL:
+  price-per-unit: 50
+CHIPPED_ANVIL:
+  price-per-unit: 45
+DAMAGED_ANVIL:
+  price-per-unit: 30
+CHISELED_QUARTZ_BLOCK:
+  price-per-unit: 0.2
+QUARTZ_BLOCK:
+  price-per-unit: 4
+QUARTZ_BRICKS:
+  price-per-unit: 2
+QUARTZ_PILLAR:
+  price-per-unit: 2
+QUARTZ_STAIRS:
+  price-per-unit: 3
+WHITE_TERRACOTTA:
+  price-per-unit: 0.2
+ORANGE_TERRACOTTA:
+  price-per-unit: 0.2
+MAGENTA_TERRACOTTA:
+  price-per-unit: 0.2
+LIGHT_BLUE_TERRACOTTA:
+  price-per-unit: 0.2
+YELLOW_TERRACOTTA:
+  price-per-unit: 0.2
+LIME_TERRACOTTA:
+  price-per-unit: 0.2
+PINK_TERRACOTTA:
+  price-per-unit: 0.2
+GRAY_TERRACOTTA:
+  price-per-unit: 0.2
+LIGHT_GRAY_TERRACOTTA:
+  price-per-unit: 0.2
+CYAN_TERRACOTTA:
+  price-per-unit: 0.2
+PURPLE_TERRACOTTA:
+  price-per-unit: 0.2
+BLUE_TERRACOTTA:
+  price-per-unit: 0.2
+BROWN_TERRACOTTA:
+  price-per-unit: 0.2
+GREEN_TERRACOTTA:
+  price-per-unit: 0.2
+RED_TERRACOTTA:
+  price-per-unit: 0.2
+BLACK_TERRACOTTA:
+  price-per-unit: 0.2
+HAY_BLOCK:
+  price-per-unit: 9
+WHITE_CARPET:
+  price-per-unit: 0.2
+ORANGE_CARPET:
+  price-per-unit: 0.2
+MAGENTA_CARPET:
+  price-per-unit: 0.2
+LIGHT_BLUE_CARPET:
+  price-per-unit: 0.2
+YELLOW_CARPET:
+  price-per-unit: 0.2
+LIME_CARPET:
+  price-per-unit: 0.2
+PINK_CARPET:
+  price-per-unit: 0.2
+GRAY_CARPET:
+  price-per-unit: 0.2
+LIGHT_GRAY_CARPET:
+  price-per-unit: 0.2
+CYAN_CARPET:
+  price-per-unit: 0.2
+PURPLE_CARPET:
+  price-per-unit: 0.2
+BLUE_CARPET:
+  price-per-unit: 0.2
+BROWN_CARPET:
+  price-per-unit: 0.2
+GREEN_CARPET:
+  price-per-unit: 0.2
+RED_CARPET:
+  price-per-unit: 0.2
+BLACK_CARPET:
+  price-per-unit: 0.2
+TERRACOTTA:
+  price-per-unit: 0.2
+PACKED_ICE:
+  price-per-unit: 0.2
+WHITE_STAINED_GLASS:
+  price-per-unit: 0.2
+ORANGE_STAINED_GLASS:
+  price-per-unit: 0.2
+MAGENTA_STAINED_GLASS:
+  price-per-unit: 0.2
+LIGHT_BLUE_STAINED_GLASS:
+  price-per-unit: 0.2
+YELLOW_STAINED_GLASS:
+  price-per-unit: 0.2
+LIME_STAINED_GLASS:
+  price-per-unit: 0.2
+PINK_STAINED_GLASS:
+  price-per-unit: 0.2
+GRAY_STAINED_GLASS:
+  price-per-unit: 0.2
+LIGHT_GRAY_STAINED_GLASS:
+  price-per-unit: 0.2
+CYAN_STAINED_GLASS:
+  price-per-unit: 0.2
+PURPLE_STAINED_GLASS:
+  price-per-unit: 0.2
+BLUE_STAINED_GLASS:
+  price-per-unit: 0.2
+BROWN_STAINED_GLASS:
+  price-per-unit: 0.2
+GREEN_STAINED_GLASS:
+  price-per-unit: 0.2
+RED_STAINED_GLASS:
+  price-per-unit: 0.2
+BLACK_STAINED_GLASS:
+  price-per-unit: 0.2
+WHITE_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+ORANGE_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+MAGENTA_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+LIGHT_BLUE_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+YELLOW_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+LIME_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+PINK_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+GRAY_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+LIGHT_GRAY_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+CYAN_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+PURPLE_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+BLUE_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+BROWN_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+GREEN_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+RED_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+BLACK_STAINED_GLASS_PANE:
+  price-per-unit: 0.2
+PRISMARINE:
+  price-per-unit: 2
+PRISMARINE_BRICKS:
+  price-per-unit: 0.2
+DARK_PRISMARINE:
+  price-per-unit: 3
+PRISMARINE_STAIRS:
+  price-per-unit: 0.2
+PRISMARINE_BRICK_STAIRS:
+  price-per-unit: 0.2
+DARK_PRISMARINE_STAIRS:
+  price-per-unit: 0.2
+RED_SANDSTONE:
+  price-per-unit: 0.2
+CHISELED_RED_SANDSTONE:
+  price-per-unit: 0.2
+CUT_RED_SANDSTONE:
+  price-per-unit: 0.2
+RED_SANDSTONE_STAIRS:
+  price-per-unit: 0.2
+MAGMA_BLOCK:
+  price-per-unit: 0.2
+RED_NETHER_BRICKS:
+  price-per-unit: 0.2
+BONE_BLOCK:
+  price-per-unit: 2
+SHULKER_BOX:
+  price-per-unit: 75
+WHITE_SHULKER_BOX:
+  price-per-unit: 75
+ORANGE_SHULKER_BOX:
+  price-per-unit: 75
+MAGENTA_SHULKER_BOX:
+  price-per-unit: 75
+LIGHT_BLUE_SHULKER_BOX:
+  price-per-unit: 75
+YELLOW_SHULKER_BOX:
+  price-per-unit: 75
+LIME_SHULKER_BOX:
+  price-per-unit: 75
+PINK_SHULKER_BOX:
+  price-per-unit: 75
+GRAY_SHULKER_BOX:
+  price-per-unit: 75
+LIGHT_GRAY_SHULKER_BOX:
+  price-per-unit: 75
+CYAN_SHULKER_BOX:
+  price-per-unit: 75
+PURPLE_SHULKER_BOX:
+  price-per-unit: 75
+BLUE_SHULKER_BOX:
+  price-per-unit: 75
+BROWN_SHULKER_BOX:
+  price-per-unit: 75
+GREEN_SHULKER_BOX:
+  price-per-unit: 75
+RED_SHULKER_BOX:
+  price-per-unit: 75
+BLACK_SHULKER_BOX:
+  price-per-unit: 75
+WHITE_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+ORANGE_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+MAGENTA_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+LIGHT_BLUE_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+YELLOW_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+LIME_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+PINK_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+GRAY_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+LIGHT_GRAY_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+CYAN_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+PURPLE_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+BLUE_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+BROWN_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+GREEN_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+RED_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+BLACK_GLAZED_TERRACOTTA:
+  price-per-unit: 0.2
+SKULL_POTTERY_SHERD:
+  price-per-unit: 10
+SHELTER_POTTERY_SHERD:
+  price-per-unit: 10
+SHEAF_POTTERY_SHERD:
+  price-per-unit: 10
+PRIZE_POTTERY_SHERD:
+  price-per-unit: 10
+PLENTY_POTTERY_SHERD:
+  price-per-unit: 10
+MOURNER_POTTERY_SHERD:
+  price-per-unit: 10
+MINER_POTTERY_SHERD:
+  price-per-unit: 10
+HOWL_POTTERY_SHERD:
+  price-per-unit: 10
+HEARTBREAK_POTTERY_SHERD:
+  price-per-unit: 10
+HEART_POTTERY_SHERD:
+  price-per-unit: 10
+FRIEND_POTTERY_SHERD:
+  price-per-unit: 10
+EXPLORER_POTTERY_SHERD:
+  price-per-unit: 10
+DANGER_POTTERY_SHERD:
+  price-per-unit: 10
+BURN_POTTERY_SHERD:
+  price-per-unit: 10
+BREWER_POTTERY_SHERD:
+  price-per-unit: 10
+BLADE_POTTERY_SHERD:
+  price-per-unit: 10
+ARMS_UP_POTTERY_SHERD:
+  price-per-unit: 10
+ARCHER_POTTERY_SHERD:
+  price-per-unit: 10
+ANGLER_POTTERY_SHERD:
+  price-per-unit: 10
+WHITE_CONCRETE:
+  price-per-unit: 1
+ORANGE_CONCRETE:
+  price-per-unit: 1
+MAGENTA_CONCRETE:
+  price-per-unit: 1
+LIGHT_BLUE_CONCRETE:
+  price-per-unit: 1
+YELLOW_CONCRETE:
+  price-per-unit: 1
+LIME_CONCRETE:
+  price-per-unit: 1
+PINK_CONCRETE:
+  price-per-unit: 1
+GRAY_CONCRETE:
+  price-per-unit: 1
+LIGHT_GRAY_CONCRETE:
+  price-per-unit: 1
+CYAN_CONCRETE:
+  price-per-unit: 1
+PURPLE_CONCRETE:
+  price-per-unit: 1
+BLUE_CONCRETE:
+  price-per-unit: 1
+BROWN_CONCRETE:
+  price-per-unit: 1
+GREEN_CONCRETE:
+  price-per-unit: 1
+RED_CONCRETE:
+  price-per-unit: 1
+BLACK_CONCRETE:
+  price-per-unit: 1
+WHITE_CONCRETE_POWDER:
+  price-per-unit: 1
+ORANGE_CONCRETE_POWDER:
+  price-per-unit: 1
+MAGENTA_CONCRETE_POWDER:
+  price-per-unit: 1
+LIGHT_BLUE_CONCRETE_POWDER:
+  price-per-unit: 1
+YELLOW_CONCRETE_POWDER:
+  price-per-unit: 1
+LIME_CONCRETE_POWDER:
+  price-per-unit: 1
+PINK_CONCRETE_POWDER:
+  price-per-unit: 1
+GRAY_CONCRETE_POWDER:
+  price-per-unit: 1
+LIGHT_GRAY_CONCRETE_POWDER:
+  price-per-unit: 1
+CYAN_CONCRETE_POWDER:
+  price-per-unit: 1
+PURPLE_CONCRETE_POWDER:
+  price-per-unit: 1
+BLUE_CONCRETE_POWDER:
+  price-per-unit: 1
+BROWN_CONCRETE_POWDER:
+  price-per-unit: 1
+GREEN_CONCRETE_POWDER:
+  price-per-unit: 1
+RED_CONCRETE_POWDER:
+  price-per-unit: 1
+BLACK_CONCRETE_POWDER:
+  price-per-unit: 1
+TURTLE_EGG:
+  price-per-unit: 20
+SNIFFER_EGG:
+  price-per-unit: 0.2
+DEAD_TUBE_CORAL_BLOCK:
+  price-per-unit: 0.2
+DEAD_BRAIN_CORAL_BLOCK:
+  price-per-unit: 0.2
+DEAD_BUBBLE_CORAL_BLOCK:
+  price-per-unit: 0.2
+DEAD_FIRE_CORAL_BLOCK:
+  price-per-unit: 0.2
+DEAD_HORN_CORAL_BLOCK:
+  price-per-unit: 0.2
+TUBE_CORAL_BLOCK:
+  price-per-unit: 0.2
+BRAIN_CORAL_BLOCK:
+  price-per-unit: 0.2
+BUBBLE_CORAL_BLOCK:
+  price-per-unit: 0.2
+FIRE_CORAL_BLOCK:
+  price-per-unit: 0.2
+HORN_CORAL_BLOCK:
+  price-per-unit: 0.2
+BLUE_ICE:
+  price-per-unit: 0.2
+CONDUIT:
+  price-per-unit: 250
+POLISHED_GRANITE_STAIRS:
+  price-per-unit: 0.2
+SMOOTH_RED_SANDSTONE_STAIRS:
+  price-per-unit: 0.2
+MOSSY_STONE_BRICK_STAIRS:
+  price-per-unit: 0.2
+POLISHED_DIORITE_STAIRS:
+  price-per-unit: 0.2
+MOSSY_COBBLESTONE_STAIRS:
+  price-per-unit: 0.2
+END_STONE_BRICK_STAIRS:
+  price-per-unit: 0.2
+STONE_STAIRS:
+  price-per-unit: 0.2
+SMOOTH_SANDSTONE_STAIRS:
+  price-per-unit: 0.2
+SMOOTH_QUARTZ_STAIRS:
+  price-per-unit: 0.2
+GRANITE_STAIRS:
+  price-per-unit: 0.2
+ANDESITE_STAIRS:
+  price-per-unit: 0.2
+RED_NETHER_BRICK_STAIRS:
+  price-per-unit: 0.2
+POLISHED_ANDESITE_STAIRS:
+  price-per-unit: 0.2
+DIORITE_STAIRS:
+  price-per-unit: 0.2
+COBBLED_DEEPSLATE_STAIRS:
+  price-per-unit: 0.2
+DEEPSLATE_BRICK_STAIRS:
+  price-per-unit: 0.2
+DEEPSLATE_TILE_STAIRS:
+  price-per-unit: 0.2
+POLISHED_GRANITE_SLAB:
+  price-per-unit: 0.2
+SMOOTH_RED_SANDSTONE_SLAB:
+  price-per-unit: 0.2
+MOSSY_STONE_BRICK_SLAB:
+  price-per-unit: 0.2
+POLISHED_DIORITE_SLAB:
+  price-per-unit: 0.2
+MOSSY_COBBLESTONE_SLAB:
+  price-per-unit: 0.2
+END_STONE_BRICK_SLAB:
+  price-per-unit: 0.2
+SMOOTH_SANDSTONE_SLAB:
+  price-per-unit: 0.2
+SMOOTH_QUARTZ_SLAB:
+  price-per-unit: 0.2
+GRANITE_SLAB:
+  price-per-unit: 0.2
+ANDESITE_SLAB:
+  price-per-unit: 0.2
+RED_NETHER_BRICK_SLAB:
+  price-per-unit: 0.2
+POLISHED_ANDESITE_SLAB:
+  price-per-unit: 0.2
+DIORITE_SLAB:
+  price-per-unit: 0.2
+COBBLED_DEEPSLATE_SLAB:
+  price-per-unit: 0.2
+POLISHED_DEEPSLATE_SLAB:
+  price-per-unit: 0.2
+DEEPSLATE_BRICK_SLAB:
+  price-per-unit: 0.2
+SCAFFOLDING:
+  price-per-unit: 0.2
+REDSTONE_TORCH:
+  price-per-unit: 0.2
+REPEATER:
+  price-per-unit: 0.2
+COMPARATOR:
+  price-per-unit: 5
+PISTON:
+  price-per-unit: 5
+STICKY_PISTON:
+  price-per-unit: 6
+SLIME_BLOCK:
+  price-per-unit: 45
+HONEY_BLOCK:
+  price-per-unit: 10
+OBSERVER:
+  price-per-unit: 8
+HOPPER:
+  price-per-unit: 30
+DISPENSER:
+  price-per-unit: 0.2
+DROPPER:
+  price-per-unit: 0.2
+LECTERN:
+  price-per-unit: 10
+TARGET:
+  price-per-unit: 0.2
+LEVER:
+  price-per-unit: 0.2
+LIGHTNING_ROD:
+  price-per-unit: 0.2
+DAYLIGHT_DETECTOR:
+  price-per-unit: 7
+SCULK_SENSOR:
+  price-per-unit: 0.2
+CALIBRATED_SCULK_SENSOR:
+  price-per-unit: 0.2
+TRIPWIRE_HOOK:
+  price-per-unit: 0.2
+TRAPPED_CHEST:
+  price-per-unit: 0.2
+TNT:
+  price-per-unit: 9
+REDSTONE_LAMP:
+  price-per-unit: 0.2
+NOTE_BLOCK:
+  price-per-unit: 0.2
+STONE_BUTTON:
+  price-per-unit: 0.2
+POLISHED_BLACKSTONE_BUTTON:
+  price-per-unit: 0.2
+OAK_BUTTON:
+  price-per-unit: 0.2
+SPRUCE_BUTTON:
+  price-per-unit: 0.2
+BIRCH_BUTTON:
+  price-per-unit: 0.2
+JUNGLE_BUTTON:
+  price-per-unit: 0.2
+ACACIA_BUTTON:
+  price-per-unit: 0.2
+CHERRY_BUTTON:
+  price-per-unit: 0.2
+DARK_OAK_BUTTON:
+  price-per-unit: 0.2
+MANGROVE_BUTTON:
+  price-per-unit: 0.2
+BAMBOO_BUTTON:
+  price-per-unit: 0.2
+CRIMSON_BUTTON:
+  price-per-unit: 0.2
+WARPED_BUTTON:
+  price-per-unit: 0.2
+STONE_PRESSURE_PLATE:
+  price-per-unit: 0.2
+POLISHED_BLACKSTONE_PRESSURE_PLATE:
+  price-per-unit: 0.2
+LIGHT_WEIGHTED_PRESSURE_PLATE:
+  price-per-unit: 0.2
+HEAVY_WEIGHTED_PRESSURE_PLATE:
+  price-per-unit: 0.2
+OAK_PRESSURE_PLATE:
+  price-per-unit: 0.2
+SPRUCE_PRESSURE_PLATE:
+  price-per-unit: 0.2
+BIRCH_PRESSURE_PLATE:
+  price-per-unit: 0.2
+JUNGLE_PRESSURE_PLATE:
+  price-per-unit: 0.2
+ACACIA_PRESSURE_PLATE:
+  price-per-unit: 0.2
+CHERRY_PRESSURE_PLATE:
+  price-per-unit: 0.2
+DARK_OAK_PRESSURE_PLATE:
+  price-per-unit: 0.2
+MANGROVE_PRESSURE_PLATE:
+  price-per-unit: 0.2
+BAMBOO_PRESSURE_PLATE:
+  price-per-unit: 0.2
+CRIMSON_PRESSURE_PLATE:
+  price-per-unit: 0.2
+WARPED_PRESSURE_PLATE:
+  price-per-unit: 0.2
+IRON_DOOR:
+  price-per-unit: 5
+OAK_DOOR:
+  price-per-unit: 0.2
+SPRUCE_DOOR:
+  price-per-unit: 0.2
+BIRCH_DOOR:
+  price-per-unit: 0.2
+JUNGLE_DOOR:
+  price-per-unit: 0.2
+ACACIA_DOOR:
+  price-per-unit: 0.2
+CHERRY_DOOR:
+  price-per-unit: 0.2
+DARK_OAK_DOOR:
+  price-per-unit: 0.2
+MANGROVE_DOOR:
+  price-per-unit: 0.2
+BAMBOO_DOOR:
+  price-per-unit: 0.2
+CRIMSON_DOOR:
+  price-per-unit: 0.2
+WARPED_DOOR:
+  price-per-unit: 0.2
+IRON_TRAPDOOR:
+  price-per-unit: 0.2
+OAK_TRAPDOOR:
+  price-per-unit: 0.2
+SPRUCE_TRAPDOOR:
+  price-per-unit: 0.2
+BIRCH_TRAPDOOR:
+  price-per-unit: 0.2
+JUNGLE_TRAPDOOR:
+  price-per-unit: 0.2
+ACACIA_TRAPDOOR:
+  price-per-unit: 0.2
+CHERRY_TRAPDOOR:
+  price-per-unit: 0.2
+DARK_OAK_TRAPDOOR:
+  price-per-unit: 0.2
+MANGROVE_TRAPDOOR:
+  price-per-unit: 0.2
+BAMBOO_TRAPDOOR:
+  price-per-unit: 0.2
+CRIMSON_TRAPDOOR:
+  price-per-unit: 0.2
+WARPED_TRAPDOOR:
+  price-per-unit: 0.2
+OAK_FENCE_GATE:
+  price-per-unit: 0.2
+SPRUCE_FENCE_GATE:
+  price-per-unit: 0.2
+BIRCH_FENCE_GATE:
+  price-per-unit: 0.2
+JUNGLE_FENCE_GATE:
+  price-per-unit: 0.2
+ACACIA_FENCE_GATE:
+  price-per-unit: 0.2
+CHERRY_FENCE_GATE:
+  price-per-unit: 0.2
+DARK_OAK_FENCE_GATE:
+  price-per-unit: 0.2
+MANGROVE_FENCE_GATE:
+  price-per-unit: 0.2
+BAMBOO_FENCE_GATE:
+  price-per-unit: 0.2
+CRIMSON_FENCE_GATE:
+  price-per-unit: 0.2
+WARPED_FENCE_GATE:
+  price-per-unit: 0.2
+POWERED_RAIL:
+  price-per-unit: 2
+DETECTOR_RAIL:
+  price-per-unit: 2
+RAIL:
+  price-per-unit: 0.5
+ACTIVATOR_RAIL:
+  price-per-unit: 6
+MINECART:
+  price-per-unit: 10
+CHEST_MINECART:
+  price-per-unit: 10
+TNT_MINECART:
+  price-per-unit: 15
+HOPPER_MINECART:
+  price-per-unit: 10
+CARROT_ON_A_STICK:
+  price-per-unit: 5
+WARPED_FUNGUS_ON_A_STICK:
+  price-per-unit: 5
+OAK_BOAT:
+  price-per-unit: 2
+OAK_CHEST_BOAT:
+  price-per-unit: 3
+SPRUCE_BOAT:
+  price-per-unit: 2
+SPRUCE_CHEST_BOAT:
+  price-per-unit: 3
+BIRCH_BOAT:
+  price-per-unit: 2
+BIRCH_CHEST_BOAT:
+  price-per-unit: 3
+JUNGLE_BOAT:
+  price-per-unit: 2
+JUNGLE_CHEST_BOAT:
+  price-per-unit: 3
+ACACIA_BOAT:
+  price-per-unit: 2
+ACACIA_CHEST_BOAT:
+  price-per-unit: 3
+CHERRY_BOAT:
+  price-per-unit: 2
+CHERRY_CHEST_BOAT:
+  price-per-unit: 3
+DARK_OAK_BOAT:
+  price-per-unit: 2
+DARK_OAK_CHEST_BOAT:
+  price-per-unit: 3
+MANGROVE_BOAT:
+  price-per-unit: 2
+MANGROVE_CHEST_BOAT:
+  price-per-unit: 3
+BAMBOO_RAFT:
+  price-per-unit: 2
+APPLE:
+  price-per-unit: 1.0
+STICK:
+  price-per-unit: 0.2
+MUSHROOM_STEW:
+  price-per-unit: 3
+BREAD:
+  price-per-unit: 3
+FLINT:
+  price-per-unit: 0.5
+PAINTING:
+  price-per-unit: 5
+GOLDEN_APPLE:
+  price-per-unit: 20
+ENCHANTED_GOLDEN_APPLE:
+  price-per-unit: 500
+OAK_SIGN:
+  price-per-unit: 1
+SPRUCE_SIGN:
+  price-per-unit: 1
+BIRCH_SIGN:
+  price-per-unit: 1
+JUNGLE_SIGN:
+  price-per-unit: 1
+ACACIA_SIGN:
+  price-per-unit: 1
+CHERRY_SIGN:
+  price-per-unit: 1
+DARK_OAK_SIGN:
+  price-per-unit: 1
+MANGROVE_SIGN:
+  price-per-unit: 1
+BAMBOO_SIGN:
+  price-per-unit: 1
+CRIMSON_SIGN:
+  price-per-unit: 1
+WARPED_SIGN:
+  price-per-unit: 1
+OAK_HANGING_SIGN:
+  price-per-unit: 2
+SPRUCE_HANGING_SIGN:
+  price-per-unit: 2
+BIRCH_HANGING_SIGN:
+  price-per-unit: 2
+JUNGLE_HANGING_SIGN:
+  price-per-unit: 2
+ACACIA_HANGING_SIGN:
+  price-per-unit: 2
+CHERRY_HANGING_SIGN:
+  price-per-unit: 2
+DARK_OAK_HANGING_SIGN:
+  price-per-unit: 2
+MANGROVE_HANGING_SIGN:
+  price-per-unit: 2
+BAMBOO_HANGING_SIGN:
+  price-per-unit: 2
+CRIMSON_HANGING_SIGN:
+  price-per-unit: 2
+WARPED_HANGING_SIGN:
+  price-per-unit: 2
+DRIED_KELP_BLOCK:
+  price-per-unit: 5
+PAPER:
+  price-per-unit: 2
+BOOK:
+  price-per-unit: 3
+EGG:
+  price-per-unit: 1
+BONE:
+  price-per-unit: 1
+SUGAR:
+  price-per-unit: 1
+CAKE:
+  price-per-unit: 10
+WHITE_BED:
+  price-per-unit: 3
+ORANGE_BED:
+  price-per-unit: 3
+MAGENTA_BED:
+  price-per-unit: 3
+LIGHT_BLUE_BED:
+  price-per-unit: 3
+YELLOW_BED:
+  price-per-unit: 3
+LIME_BED:
+  price-per-unit: 3
+PINK_BED:
+  price-per-unit: 3
+GRAY_BED:
+  price-per-unit: 3
+LIGHT_GRAY_BED:
+  price-per-unit: 3
+CYAN_BED:
+  price-per-unit: 3
+PURPLE_BED:
+  price-per-unit: 3
+BLUE_BED:
+  price-per-unit: 3
+BROWN_BED:
+  price-per-unit: 3
+GREEN_BED:
+  price-per-unit: 3
+RED_BED:
+  price-per-unit: 3
+BLACK_BED:
+  price-per-unit: 3
+COOKIE:
+  price-per-unit: 2
+MAP:
+  price-per-unit: 5
+MELON_SLICE:
+  price-per-unit: 1
+DRIED_KELP:
+  price-per-unit: 0.5
+GLASS_BOTTLE:
+  price-per-unit: 0.5
+FERMENTED_SPIDER_EYE:
+  price-per-unit: 3
+BLAZE_POWDER:
+  price-per-unit: 1
+CAULDRON:
+  price-per-unit: 14
+ENDER_EYE:
+  price-per-unit: 5
+GLISTERING_MELON_SLICE:
+  price-per-unit: 5
+GOLDEN_CARROT:
+  price-per-unit: 5
+WRITTEN_BOOK:
+  price-per-unit: 10
+END_CRYSTAL:
+  price-per-unit: 50
+NETHER_STAR:
+  price-per-unit: 2500
+POPPED_CHORUS_FRUIT:
+  price-per-unit: 1
+SPECTRAL_ARROW:
+  price-per-unit: 5
+SHIELD:
+  price-per-unit: 5
+BELL:
+  price-per-unit: 30
+BEE_NEST:
+  price-per-unit: 20
+HONEYCOMB:
+  price-per-unit: 5
+HONEY_BOTTLE:
+  price-per-unit: 5
+RESPAWN_ANCHOR:
+  price-per-unit: 30
+POINTED_DRIPSTONE:
+  price-per-unit: 2
+CANDLE:
+  price-per-unit: 2
+WHITE_CANDLE:
+  price-per-unit: 2
+ORANGE_CANDLE:
+  price-per-unit: 2
+MAGENTA_CANDLE:
+  price-per-unit: 2
+LIGHT_BLUE_CANDLE:
+  price-per-unit: 2
+YELLOW_CANDLE:
+  price-per-unit: 2
+LIME_CANDLE:
+  price-per-unit: 2
+PINK_CANDLE:
+  price-per-unit: 2
+GRAY_CANDLE:
+  price-per-unit: 2
+LIGHT_GRAY_CANDLE:
+  price-per-unit: 2
+CYAN_CANDLE:
+  price-per-unit: 2
+PURPLE_CANDLE:
+  price-per-unit: 2
+BLUE_CANDLE:
+  price-per-unit: 2
+BROWN_CANDLE:
+  price-per-unit: 2
+GREEN_CANDLE:
+  price-per-unit: 2
+RED_CANDLE:
+  price-per-unit: 2
+BLACK_CANDLE:
+  price-per-unit: 2
+

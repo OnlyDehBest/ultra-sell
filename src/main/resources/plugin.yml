@@ -1,0 +1,9 @@
+name: ultra-sell
+version: '1.0-SNAPSHOT'
+main: it.onlynelchilling.ultrasell.UltraSell
+api-version: '1.21'
+author: onlynelchilling
+depend:
+  - Vault
+softdepend:
+  - packetevents

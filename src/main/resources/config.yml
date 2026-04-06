@@ -1,0 +1,75 @@
+# ========================================
+#          UltraSell Configuration
+# ========================================
+
+gui:
+  title: "&8ꜱᴇʟʟɢᴜɪ"
+  size: 54
+  decorations:
+    border:
+      material: "BLACK_STAINED_GLASS_PANE"
+      name: " "
+      lore: []
+      slots: [0,1,2,3,4,5,6,7,8,45,46,47,48,50,51,52,53]
+    info:
+      material: "HOPPER"
+      name: "&e&lꜱᴇʟʟ ɢᴜɪ"
+      lore:
+        - ""
+        - "&6&l｜&fPlace &ayour items&f in the"
+        - "&6&l｜&fempty slots and &cclose"
+        - "&6&l｜&fthe GUI to sell them."
+        - ""
+        - "&7Unsellable items will be"
+        - "&7returned to your inventory."
+        - ""
+      slots: [49]
+
+# Price formatting settings
+#   Examples:
+#     "#,##0.00"   → 1,000.00  (US style)
+#     "#.##0,00"   → 1.000,00  (EU style)
+#     "#,##0"      → 1,000     (no decimals)
+#     "0.##"       → 1000.5    (minimal decimals)
+# locale: Language tag for number formatting
+#   Examples: "en-US", "it-IT", "de-DE", "fr-FR", "pt-BR"
+settings:
+  price-format: "#,##0.00"
+  price-locale: "en-US"
+
+# Sound settings
+# Set sound to "" or "NONE" to disable
+sounds:
+  sell-success:
+    sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+    volume: 1.0
+    pitch: 1.2
+  sell-fail:
+    sound: "ENTITY_VILLAGER_NO"
+    volume: 0.7
+    pitch: 0.8
+
+# Placeholder supports: {amount}, {total}, {currency}, {multiplier}, {count}
+messages:
+  prefix: "&6UltraSell &8• "
+  empty: "&cYou have not inserted any items!"
+  sold-success: "&aYou sold &e{amount} &aitems for &e{total} {currency}&a!"
+  sold-success-multiplier: "&aYou sold &e{amount} &aitems for &e{total} {currency} &a(&7x{multiplier} Multiplier&a)!"
+  unsellable-items: "&e{count} &cunsellable items have been returned."
+  no-sellable-items: "&cNone of the &e{count} &cinserted items are sellable."
+  reload-success: "&aConfiguration reloaded successfully!"
+  hand-air: "&cYou are not holding any item!"
+  hand-not-sellable: "&cThe item in your hand is not sellable."
+
+worth-lore:
+  enabled: true
+  format: "&7Worth: &a{price}$"
+
+sell-multipliers:
+  enabled: true
+  multipliers:
+    "3.0": "ultrasell.multiplier.legendary"
+    "2.5": "ultrasell.multiplier.mythic"
+    "2.0": "ultrasell.multiplier.mvp"
+    "1.5": "ultrasell.multiplier.vip"
+
