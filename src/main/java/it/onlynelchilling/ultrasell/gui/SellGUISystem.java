@@ -1,7 +1,6 @@
 package it.onlynelchilling.ultrasell.gui;
 
 import it.onlynelchilling.ultrasell.UltraSell;
-import it.onlynelchilling.ultrasell.config.ConfigManager.DecorationItem;
 import it.onlynelchilling.ultrasell.config.ConfigManager.MultiplierEntry;
 import it.onlynelchilling.ultrasell.config.ConfigManager.SoundEntry;
 import org.bukkit.Bukkit;
@@ -14,21 +13,60 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class SellGUISystem {
 
     private final UltraSell plugin;
 
+    private String cachedTitle;
+    private int cachedSize;
+    private ItemStack[] cachedDecorationTemplate;
+    private Set<Integer> cachedDecorationSlots;
+
     public SellGUISystem(UltraSell plugin) {
         this.plugin = plugin;
+        rebuildGUICache();
+    }
+
+    public void rebuildGUICache() {
+        var cfg = plugin.getConfigManager();
+        cachedTitle = plugin.getMessageUtils().toLegacy(cfg.getGuiTitle());
+        cachedSize = cfg.getGuiSize();
+
+        var template = new ItemStack[cachedSize];
+        var decoSlots = new HashSet<Integer>();
+        var msgUtils = plugin.getMessageUtils();
+
+        for (var decoration : cfg.getDecorations()) {
+            var item = new ItemStack(decoration.material());
+            var meta = item.getItemMeta();
+
+            if (meta != null) {
+                meta.setDisplayName(msgUtils.toLegacy(decoration.name()));
+
+                if (!decoration.lore().isEmpty()) {
+                    meta.setLore(decoration.lore().stream()
+                            .map(msgUtils::toLegacy)
+                            .toList());
+                }
+
+                item.setItemMeta(meta);
+            }
+
+            for (int slot : decoration.slots()) {
+                if (slot >= 0 && slot < cachedSize) {
+                    template[slot] = item;
+                    decoSlots.add(slot);
+                }
+            }
+        }
+
+        cachedDecorationTemplate = template;
+        cachedDecorationSlots = Set.copyOf(decoSlots);
     }
 
     public void openSellGUI(Player player) {
-        var cfg = plugin.getConfigManager();
-        var title = plugin.getMessageUtils().toLegacy(cfg.getGuiTitle());
-        var gui = new SellInventory(this, title, cfg.getGuiSize(), cfg.getDecorations());
-
+        var gui = new SellInventory(this);
         player.openInventory(gui.getInventory());
     }
 
@@ -266,39 +304,17 @@ public class SellGUISystem {
 
         private final SellGUISystem system;
         private final Inventory inventory;
-        private final Set<Integer> decorationSlots = ConcurrentHashMap.newKeySet();
+        private final Set<Integer> decorationSlots;
 
-        SellInventory(SellGUISystem system, String title, int size, List<DecorationItem> decorations) {
+        SellInventory(SellGUISystem system) {
             this.system = system;
-            this.inventory = Bukkit.createInventory(this, size, title);
+            this.inventory = Bukkit.createInventory(this, system.cachedSize, system.cachedTitle);
+            this.decorationSlots = system.cachedDecorationSlots;
 
-            applyDecorations(decorations);
-        }
-
-        private void applyDecorations(List<DecorationItem> decorations) {
-            var msgUtils = system.plugin.getMessageUtils();
-
-            for (var decoration : decorations) {
-                var item = new ItemStack(decoration.material());
-                var meta = item.getItemMeta();
-
-                if (meta != null) {
-                    meta.setDisplayName(msgUtils.toLegacy(decoration.name()));
-
-                    if (!decoration.lore().isEmpty()) {
-                        meta.setLore(decoration.lore().stream()
-                                .map(msgUtils::toLegacy)
-                                .toList());
-                    }
-
-                    item.setItemMeta(meta);
-                }
-
-                for (int slot : decoration.slots()) {
-                    if (slot >= 0 && slot < inventory.getSize()) {
-                        inventory.setItem(slot, item);
-                        decorationSlots.add(slot);
-                    }
+            var template = system.cachedDecorationTemplate;
+            for (int i = 0; i < template.length; i++) {
+                if (template[i] != null) {
+                    inventory.setItem(i, template[i]);
                 }
             }
         }

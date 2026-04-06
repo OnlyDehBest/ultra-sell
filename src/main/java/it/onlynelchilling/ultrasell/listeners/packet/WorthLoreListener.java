@@ -41,6 +41,7 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
     private final Map<String, Double> stringPriceCache = new ConcurrentHashMap<>();
     private final Map<ItemType, Double> resolvedPriceCache = new ConcurrentHashMap<>();
     private final Map<ItemType, Boolean> shulkerCheckCache = new ConcurrentHashMap<>();
+    private final Map<Double, Component> worthLineCache = new ConcurrentHashMap<>();
 
     private static final Set<String> SHULKER_NAMES = Set.of(
             "minecraft:shulker_box", "minecraft:white_shulker_box", "minecraft:orange_shulker_box",
@@ -62,6 +63,7 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
         stringPriceCache.clear();
         resolvedPriceCache.clear();
         shulkerCheckCache.clear();
+        worthLineCache.clear();
 
         if (plugin.getConfigManager().isWorthLoreEnabled()) {
             for (Map.Entry<Material, Double> entry : plugin.getConfigManager().getPrices().entrySet()) {
@@ -76,11 +78,7 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
 
     @EventHandler
     private void onPlayerJoin(PlayerJoinEvent event) {
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            if (event.getPlayer().isOnline()) {
-                scheduleUpdate(event.getPlayer());
-            }
-        }, 5L);
+        scheduleUpdate(event.getPlayer(), 5L);
     }
 
     @EventHandler
@@ -101,13 +99,17 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
     }
 
     private void scheduleUpdate(Player player) {
+        scheduleUpdate(player, 1L);
+    }
+
+    private void scheduleUpdate(Player player, long delay) {
         UUID uuid = player.getUniqueId();
         if (!pendingUpdates.add(uuid)) return;
 
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             pendingUpdates.remove(uuid);
             if (player.isOnline()) player.updateInventory();
-        }, 1L);
+        }, delay);
     }
 
     @Override
@@ -270,15 +272,17 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
     }
 
     private Component buildWorthLine(double total) {
-        var cfg = plugin.getConfigManager();
-        var format = cfg.getWorthLoreFormat()
-                .replace("{price}", cfg.formatPriceSmart(total))
-                .replace("{currency}", plugin.getVaultHook().getCurrencyName());
+        return worthLineCache.computeIfAbsent(total, t -> {
+            var cfg = plugin.getConfigManager();
+            var format = cfg.getWorthLoreFormat()
+                    .replace("{price}", cfg.formatPriceSmart(t))
+                    .replace("{currency}", plugin.getVaultHook().getCurrencyName());
 
-        return Component.empty()
-                .decoration(TextDecoration.ITALIC, false)
-                .insertion(WORTH_MARKER)
-                .append(plugin.getMessageUtils().deserialize(format));
+            return Component.empty()
+                    .decoration(TextDecoration.ITALIC, false)
+                    .insertion(WORTH_MARKER)
+                    .append(plugin.getMessageUtils().deserialize(format));
+        });
     }
 
     private boolean isPluginGui(Player player) {

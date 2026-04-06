@@ -30,6 +30,7 @@ public class SellCommand extends BaseCommand {
     @CommandPermission("ultrasell.reload")
     public void onReload(CommandSender sender) {
         plugin.getConfigManager().reload();
+        plugin.getSellGUISystem().rebuildGUICache();
         plugin.rebuildWorthLoreCache();
 
         if (sender instanceof Player player) {
