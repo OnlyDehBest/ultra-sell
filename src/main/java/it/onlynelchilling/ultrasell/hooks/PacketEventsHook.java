@@ -9,7 +9,7 @@ public final class PacketEventsHook {
     private PacketEventsHook() {}
 
     public static Runnable register(UltraSell plugin) {
-        var listener = new WorthLoreListener(plugin);
+        WorthLoreListener listener = new WorthLoreListener(plugin);
         PacketEvents.getAPI().getEventManager().registerListener(listener);
         return listener::rebuildPriceCache;
     }

@@ -1,6 +1,7 @@
 package it.onlynelchilling.ultrasell.utils;
 
 import it.onlynelchilling.ultrasell.UltraSell;
+import it.onlynelchilling.ultrasell.config.ConfigManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -65,7 +66,7 @@ public final class MessageUtils {
     }
 
     private Component parse(String text) {
-        var normalized = text.replace('§', '&');
+        String normalized = text.replace('§', '&');
 
         normalized = HEX_PATTERN.matcher(normalized).replaceAll("<color:#$1>");
 
@@ -75,16 +76,16 @@ public final class MessageUtils {
     }
 
     private String convertLegacyCodes(String text) {
-        var sb = new StringBuilder(text.length());
-        var openDecorations = new LinkedHashSet<Character>();
+        StringBuilder sb = new StringBuilder(text.length());
+        LinkedHashSet<Character> openDecorations = new LinkedHashSet<>();
 
         for (int i = 0; i < text.length(); i++) {
-            var ch = text.charAt(i);
+            char ch = text.charAt(i);
 
             if (ch == '&' && i + 1 < text.length()) {
-                var code = Character.toLowerCase(text.charAt(i + 1));
+                char code = Character.toLowerCase(text.charAt(i + 1));
 
-                var colorTag = COLOR_MAP.get(code);
+                String colorTag = COLOR_MAP.get(code);
                 if (colorTag != null) {
                     closeAllDecorations(sb, openDecorations);
                     sb.append(colorTag);
@@ -92,7 +93,7 @@ public final class MessageUtils {
                     continue;
                 }
 
-                var decoTag = DECORATION_OPEN_MAP.get(code);
+                String decoTag = DECORATION_OPEN_MAP.get(code);
                 if (decoTag != null) {
                     sb.append(decoTag);
                     openDecorations.add(code);
@@ -115,10 +116,10 @@ public final class MessageUtils {
     }
 
     private void closeAllDecorations(StringBuilder sb, LinkedHashSet<Character> openDecorations) {
-        var list = new ArrayList<>(openDecorations);
+        ArrayList<Character> list = new ArrayList<>(openDecorations);
         Collections.reverse(list);
         for (char code : list) {
-            var closeTag = DECORATION_CLOSE_MAP.get(code);
+            String closeTag = DECORATION_CLOSE_MAP.get(code);
             if (closeTag != null) {
                 sb.append(closeTag);
             }
@@ -127,7 +128,7 @@ public final class MessageUtils {
     }
 
     public String toLegacy(String text) {
-        var wrapped = Component.empty()
+        Component wrapped = Component.empty()
                 .decoration(TextDecoration.BOLD, false)
                 .decoration(TextDecoration.ITALIC, false)
                 .append(deserialize(text));
@@ -135,12 +136,12 @@ public final class MessageUtils {
     }
 
     public void send(Player player, String path, Object... replacements) {
-        var cfg = plugin.getConfigManager();
-        var prefix = deserialize(cfg.getMessage("prefix"));
-        var raw = cfg.getMessage(path, replacements);
-        var message = deserialize(raw);
+        ConfigManager cfg = plugin.getConfigManager();
+        Component prefix = deserialize(cfg.getMessage("prefix"));
+        String raw = cfg.getMessage(path, replacements);
+        Component message = deserialize(raw);
 
-        var combined = Component.empty()
+        Component combined = Component.empty()
                 .decoration(TextDecoration.BOLD, false)
                 .decoration(TextDecoration.ITALIC, false)
                 .append(prefix)
@@ -150,8 +151,8 @@ public final class MessageUtils {
     }
 
     public void sendActionBar(Player player, String path, Object... replacements) {
-        var raw = plugin.getConfigManager().getMessage(path, replacements);
-        var component = Component.empty()
+        String raw = plugin.getConfigManager().getMessage(path, replacements);
+        Component component = Component.empty()
                 .decoration(TextDecoration.BOLD, false)
                 .decoration(TextDecoration.ITALIC, false)
                 .append(deserialize(raw));

@@ -34,6 +34,8 @@ gui:
 # locale: Language tag for number formatting
 #   Examples: "en-US", "it-IT", "de-DE", "fr-FR", "pt-BR"
 settings:
+  # Enable anonymous statistics via bStats
+  metrics: true
   price-format: "#,##0.00"
   price-locale: "en-US"
 

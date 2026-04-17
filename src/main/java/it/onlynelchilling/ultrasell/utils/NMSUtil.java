@@ -31,8 +31,8 @@ public final class NMSUtil {
 
     public static void init() {
         try {
-            var componentClass = Class.forName("net.minecraft.network.chat.Component");
-            var packetClass = Class.forName("net.minecraft.network.protocol.game.ClientboundSystemChatPacket");
+            Class<?> componentClass = Class.forName("net.minecraft.network.chat.Component");
+            Class<?> packetClass = Class.forName("net.minecraft.network.protocol.game.ClientboundSystemChatPacket");
 
             systemChatCtor = packetClass.getConstructor(componentClass, boolean.class);
             registryAccess = resolveRegistryAccess();
@@ -45,10 +45,10 @@ public final class NMSUtil {
     }
 
     private static Object resolveRegistryAccess() throws Exception {
-        var server = Bukkit.getServer();
-        var minecraft = server.getClass().getMethod("getServer").invoke(server);
+        Object server = Bukkit.getServer();
+        Object minecraft = server.getClass().getMethod("getServer").invoke(server);
 
-        for (var name : new String[]{"registryAccess", "getRegistryAccess"}) {
+        for (String name : new String[]{"registryAccess", "getRegistryAccess"}) {
             try {
                 return minecraft.getClass().getMethod(name).invoke(minecraft);
             } catch (NoSuchMethodException ignored) {}
@@ -58,7 +58,7 @@ public final class NMSUtil {
     }
 
     private static Method resolveFromJson(Class<?> componentClass) throws Exception {
-        var serializer = Class.forName("net.minecraft.network.chat.Component$Serializer");
+        Class<?> serializer = Class.forName("net.minecraft.network.chat.Component$Serializer");
 
         return Arrays.stream(serializer.getMethods())
                 .filter(m -> Modifier.isStatic(m.getModifiers()))
@@ -85,9 +85,9 @@ public final class NMSUtil {
         }
 
         try {
-            var json = GsonComponentSerializer.gson().serialize(component);
-            var nmsComponent = fromJsonMethod.invoke(null, json, registryAccess);
-            var packet = systemChatCtor.newInstance(nmsComponent, overlay);
+            String json = GsonComponentSerializer.gson().serialize(component);
+            Object nmsComponent = fromJsonMethod.invoke(null, json, registryAccess);
+            Object packet = systemChatCtor.newInstance(nmsComponent, overlay);
 
             MinecraftConnection.sendPacket(player, packet);
         } catch (Exception e) {
@@ -97,7 +97,7 @@ public final class NMSUtil {
 
     @SuppressWarnings("deprecation")
     private static void fallback(Player player, Component component, boolean overlay) {
-        var legacy = LEGACY.serialize(component);
+        String legacy = LEGACY.serialize(component);
 
         if (overlay) {
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(legacy));

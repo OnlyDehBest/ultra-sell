@@ -1,8 +1,10 @@
 package it.onlynelchilling.ultrasell.gui;
 
 import it.onlynelchilling.ultrasell.UltraSell;
-import it.onlynelchilling.ultrasell.config.ConfigManager.MultiplierEntry;
+import it.onlynelchilling.ultrasell.config.ConfigManager;
+import it.onlynelchilling.ultrasell.config.ConfigManager.DecorationItem;
 import it.onlynelchilling.ultrasell.config.ConfigManager.SoundEntry;
+import it.onlynelchilling.ultrasell.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Tag;
@@ -11,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
@@ -29,17 +32,17 @@ public class SellGUISystem {
     }
 
     public void rebuildGUICache() {
-        var cfg = plugin.getConfigManager();
+        ConfigManager cfg = plugin.getConfigManager();
         cachedTitle = plugin.getMessageUtils().toLegacy(cfg.getGuiTitle());
         cachedSize = cfg.getGuiSize();
 
-        var template = new ItemStack[cachedSize];
-        var decoSlots = new HashSet<Integer>();
-        var msgUtils = plugin.getMessageUtils();
+        ItemStack[] template = new ItemStack[cachedSize];
+        HashSet<Integer> decoSlots = new HashSet<>();
+        MessageUtils msgUtils = plugin.getMessageUtils();
 
-        for (var decoration : cfg.getDecorations()) {
-            var item = new ItemStack(decoration.material());
-            var meta = item.getItemMeta();
+        for (DecorationItem decoration : cfg.getDecorations()) {
+            ItemStack item = new ItemStack(decoration.material());
+            ItemMeta meta = item.getItemMeta();
 
             if (meta != null) {
                 meta.setDisplayName(msgUtils.toLegacy(decoration.name()));
@@ -66,18 +69,18 @@ public class SellGUISystem {
     }
 
     public void openSellGUI(Player player) {
-        var gui = new SellInventory(this);
+        SellInventory gui = new SellInventory(this);
         player.openInventory(gui.getInventory());
     }
 
     public void handleInventoryClose(Player player, Inventory inventory) {
-        var sellInv = (SellInventory) inventory.getHolder();
-        var items = new ArrayList<ItemStack>();
+        SellInventory sellInv = (SellInventory) inventory.getHolder();
+        ArrayList<ItemStack> items = new ArrayList<>();
 
         for (int i = 0; i < inventory.getSize(); i++) {
             if (sellInv != null && sellInv.isDecorationSlot(i)) continue;
 
-            var item = inventory.getItem(i);
+            ItemStack item = inventory.getItem(i);
 
             if (item != null && !item.getType().isAir()) {
                 items.add(item.clone());
@@ -92,7 +95,7 @@ public class SellGUISystem {
         }
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
-            var result = processSellItems(items);
+            SellResult result = processSellItems(items);
 
             Bukkit.getScheduler().runTask(plugin, () -> {
                 if (!player.isOnline()) return;
@@ -104,14 +107,14 @@ public class SellGUISystem {
     }
 
     public void sellHand(Player player) {
-        var item = player.getInventory().getItemInMainHand();
+        ItemStack item = player.getInventory().getItemInMainHand();
 
         if (item.getType().isAir()) {
             plugin.getMessageUtils().send(player, "hand-air");
             return;
         }
 
-        var price = plugin.getConfigManager().getPrices().get(item.getType());
+        Double price = plugin.getConfigManager().getPrices().get(item.getType());
 
         if (price == null) {
             plugin.getMessageUtils().send(player, "hand-not-sellable");
@@ -119,43 +122,31 @@ public class SellGUISystem {
             return;
         }
 
-        var amount = item.getAmount();
+        int amount = item.getAmount();
 
         player.getInventory().setItemInMainHand(null);
 
-        var totalPrice = price * amount;
-        var result = new SellResult(totalPrice, amount, List.of());
+        double totalPrice = price * amount;
+        SellResult result = new SellResult(totalPrice, amount, List.of());
 
         handlePayment(player, result);
     }
 
     public double getMultiplier(Player player) {
-        var cfg = plugin.getConfigManager();
-
-        if (!cfg.isMultiplierEnabled() || cfg.getMultiplierEntries().isEmpty()) {
-            return 1.0;
-        }
-
-        for (MultiplierEntry entry : cfg.getMultiplierEntries()) {
-            if (player.hasPermission(entry.permission())) {
-                return entry.multiplier();
-            }
-        }
-
-        return 1.0;
+        return plugin.getPlayerCache().multiplier(player);
     }
 
 
     private SellResult processSellItems(List<ItemStack> items) {
-        var prices = plugin.getConfigManager().getPrices();
+        Map<Material, Double> prices = plugin.getConfigManager().getPrices();
 
-        var totalPrice = 0.0;
-        var totalItemsSold = 0;
-        var itemsReturned = new ArrayList<ItemStack>();
+        double totalPrice = 0.0;
+        int totalItemsSold = 0;
+        ArrayList<ItemStack> itemsReturned = new ArrayList<>();
 
         for (ItemStack item : items) {
             if (Tag.SHULKER_BOXES.isTagged(item.getType())) {
-                var shulkerResult = processShulkerBox(item, prices);
+                ShulkerResult shulkerResult = processShulkerBox(item, prices);
 
                 totalPrice += shulkerResult.price();
                 totalItemsSold += shulkerResult.itemCount();
@@ -166,7 +157,7 @@ public class SellGUISystem {
                 continue;
             }
 
-            var price = prices.get(item.getType());
+            Double price = prices.get(item.getType());
 
             if (price != null) {
                 totalPrice += price * item.getAmount();
@@ -185,11 +176,11 @@ public class SellGUISystem {
             return new ShulkerResult(0.0, 0, List.of(shulkerItem));
         }
 
-        var price = 0.0;
-        var itemCount = 0;
-        var unsellable = new ArrayList<ItemStack>();
+        double price = 0.0;
+        int itemCount = 0;
+        ArrayList<ItemStack> unsellable = new ArrayList<>();
 
-        var shulkerPrice = prices.get(shulkerItem.getType());
+        Double shulkerPrice = prices.get(shulkerItem.getType());
         if (shulkerPrice != null) {
             price += shulkerPrice;
             itemCount++;
@@ -198,7 +189,7 @@ public class SellGUISystem {
         for (ItemStack content : shulkerBox.getInventory().getContents()) {
             if (content == null || content.getType().isAir()) continue;
 
-            var contentPrice = prices.get(content.getType());
+            Double contentPrice = prices.get(content.getType());
 
             if (contentPrice != null) {
                 price += contentPrice * content.getAmount();
@@ -214,19 +205,19 @@ public class SellGUISystem {
     private void returnUnsellableItems(Player player, List<ItemStack> itemsReturned) {
         if (itemsReturned.isEmpty()) return;
 
-        var playerInv = player.getInventory();
-        var playerLoc = player.getLocation();
-        var world = player.getWorld();
+        org.bukkit.inventory.PlayerInventory playerInv = player.getInventory();
+        org.bukkit.Location playerLoc = player.getLocation();
+        org.bukkit.World world = player.getWorld();
 
         for (ItemStack item : itemsReturned) {
-            var leftovers = playerInv.addItem(item);
+            Map<Integer, ItemStack> leftovers = playerInv.addItem(item);
             leftovers.values().forEach(leftover -> world.dropItem(playerLoc, leftover));
         }
     }
 
     private void handlePayment(Player player, SellResult result) {
-        var msg = plugin.getMessageUtils();
-        var cfg = plugin.getConfigManager();
+        MessageUtils msg = plugin.getMessageUtils();
+        ConfigManager cfg = plugin.getConfigManager();
 
         if (result.totalPrice() <= 0) {
             if (!result.itemsReturned().isEmpty()) {
@@ -235,16 +226,17 @@ public class SellGUISystem {
             return;
         }
 
-        var multiplier = getMultiplier(player);
-        var finalPrice = result.totalPrice() * multiplier;
+        double multiplier = getMultiplier(player);
+        double finalPrice = result.totalPrice() * multiplier;
 
         plugin.getVaultHook().depositPlayer(player, finalPrice);
+        plugin.getPlayerCache().get(player).stats().add(result.totalItemsSold(), finalPrice);
 
-        var formattedPrice = cfg.formatPrice(finalPrice);
-        var currencyName = plugin.getVaultHook().getCurrencyName();
+        String formattedPrice = cfg.formatPrice(finalPrice);
+        String currencyName = plugin.getVaultHook().getCurrencyName();
 
         if (multiplier > 1.0) {
-            var formattedMultiplier = String.format(Locale.US, "%.1f", multiplier);
+            String formattedMultiplier = String.format(Locale.US, "%.1f", multiplier);
 
             msg.sendActionBar(player, "sold-success-multiplier",
                     "{amount}", result.totalItemsSold(),
@@ -311,7 +303,7 @@ public class SellGUISystem {
             this.inventory = Bukkit.createInventory(this, system.cachedSize, system.cachedTitle);
             this.decorationSlots = system.cachedDecorationSlots;
 
-            var template = system.cachedDecorationTemplate;
+            ItemStack[] template = system.cachedDecorationTemplate;
             for (int i = 0; i < template.length; i++) {
                 if (template[i] != null) {
                     inventory.setItem(i, template[i]);

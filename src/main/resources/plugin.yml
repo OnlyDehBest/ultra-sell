@@ -7,3 +7,9 @@ depend:
   - Vault
 softdepend:
   - packetevents
+libraries:
+  - org.xerial:sqlite-jdbc:3.46.1.0
+  - com.h2database:h2:2.3.232
+  - com.mysql:mysql-connector-j:8.4.0
+  - org.mariadb.jdbc:mariadb-java-client:3.4.1
+  - com.zaxxer:HikariCP:5.1.0

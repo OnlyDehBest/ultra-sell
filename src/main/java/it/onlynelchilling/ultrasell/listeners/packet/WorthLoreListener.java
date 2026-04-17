@@ -13,6 +13,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketTypeCommon;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSetSlot;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerWindowItems;
 import it.onlynelchilling.ultrasell.UltraSell;
+import it.onlynelchilling.ultrasell.config.ConfigManager;
 import it.onlynelchilling.ultrasell.gui.PluginGui;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -262,19 +263,14 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
 
     private double getPrice(ItemType type) {
         if (type == null) return 0;
-        Double resolved = resolvedPriceCache.get(type);
-        if (resolved != null) return resolved;
-
-        String key = type.getName().toString();
-        Double price = stringPriceCache.getOrDefault(key, 0.0);
-        resolvedPriceCache.put(type, price);
-        return price;
+        return resolvedPriceCache.computeIfAbsent(type,
+                t -> stringPriceCache.getOrDefault(t.getName().toString(), 0.0));
     }
 
     private Component buildWorthLine(double total) {
         return worthLineCache.computeIfAbsent(total, t -> {
-            var cfg = plugin.getConfigManager();
-            var format = cfg.getWorthLoreFormat()
+            ConfigManager cfg = plugin.getConfigManager();
+            String format = cfg.getWorthLoreFormat()
                     .replace("{price}", cfg.formatPriceSmart(t))
                     .replace("{currency}", plugin.getVaultHook().getCurrencyName());
 

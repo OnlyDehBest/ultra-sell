@@ -1,0 +1,12 @@
+database:
+  # Supported types: SQLITE, MYSQL, H2, MARIADB
+  type: "SQLITE"
+  host: "localhost"
+  port: 3306
+  name: "ultrasell"
+  user: "root"
+  password: ""
+  file: "data"
+  pool-size: 6
+  table: "ultrasell_stats"
+
