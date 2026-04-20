@@ -19,7 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class UltraSell extends JavaPlugin {
 
-    private static final int BSTATS_PLUGIN_ID = 0;
+    private static final int BSTATS_PLUGIN_ID = 30869;
 
     private ConfigManager configManager;
     private DatabaseManager databaseManager;

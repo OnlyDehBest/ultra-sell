@@ -1,7 +1,7 @@
 package it.onlynelchilling.ultrasell.listeners;
 
 import it.onlynelchilling.ultrasell.UltraSell;
-import org.bukkit.Bukkit;
+import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -17,7 +17,7 @@ public class PlayerJoinListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> plugin.getPlayerCache().loadAsync(event.getPlayer()));
+        SchedulerUtil.runAsync(plugin, () -> plugin.getPlayerCache().loadAsync(event.getPlayer()));
     }
 
     @EventHandler

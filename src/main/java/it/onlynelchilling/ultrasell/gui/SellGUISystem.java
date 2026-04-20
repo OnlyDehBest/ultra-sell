@@ -5,6 +5,7 @@ import it.onlynelchilling.ultrasell.config.ConfigManager;
 import it.onlynelchilling.ultrasell.config.ConfigManager.DecorationItem;
 import it.onlynelchilling.ultrasell.config.ConfigManager.SoundEntry;
 import it.onlynelchilling.ultrasell.utils.MessageUtils;
+import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Tag;
@@ -94,15 +95,15 @@ public class SellGUISystem {
             return;
         }
 
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        SchedulerUtil.runAsync(plugin, () -> {
             SellResult result = processSellItems(items);
 
-            Bukkit.getScheduler().runTask(plugin, () -> {
+            SchedulerUtil.runForEntity(plugin, player, () -> {
                 if (!player.isOnline()) return;
 
                 returnUnsellableItems(player, result.itemsReturned());
                 handlePayment(player, result);
-            });
+            }, null);
         });
     }
 

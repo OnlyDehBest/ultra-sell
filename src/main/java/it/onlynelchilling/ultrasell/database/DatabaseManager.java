@@ -4,7 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import it.onlynelchilling.ultrasell.UltraSell;
 import it.onlynelchilling.ultrasell.config.ConfigType;
-import org.bukkit.Bukkit;
+import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
@@ -90,7 +90,7 @@ public class DatabaseManager {
     }
 
     public void saveAsync(UUID uuid, String name, PlayerStats stats) {
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> save(uuid, name, stats));
+        SchedulerUtil.runAsync(plugin, () -> save(uuid, name, stats));
     }
 
     public void save(UUID uuid, String name, PlayerStats stats) {

@@ -13,6 +13,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketTypeCommon;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSetSlot;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerWindowItems;
 import it.onlynelchilling.ultrasell.UltraSell;
+import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
 import it.onlynelchilling.ultrasell.config.ConfigManager;
 import it.onlynelchilling.ultrasell.gui.PluginGui;
 import net.kyori.adventure.text.Component;
@@ -107,10 +108,10 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
         UUID uuid = player.getUniqueId();
         if (!pendingUpdates.add(uuid)) return;
 
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        SchedulerUtil.runForEntityLater(plugin, player, () -> {
             pendingUpdates.remove(uuid);
             if (player.isOnline()) player.updateInventory();
-        }, delay);
+        }, () -> pendingUpdates.remove(uuid), delay);
     }
 
     @Override
