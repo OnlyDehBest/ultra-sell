@@ -68,24 +68,29 @@ public class DatabaseManager {
                 "uuid VARCHAR(36) PRIMARY KEY," +
                 "name VARCHAR(32) NOT NULL," +
                 "items_sold BIGINT NOT NULL DEFAULT 0," +
-                "money_earned DOUBLE NOT NULL DEFAULT 0)";
+                "money_earned DOUBLE NOT NULL DEFAULT 0," +
+                "auto_sell TINYINT NOT NULL DEFAULT 0)";
         try (Connection con = source.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.execute();
         }
+        try (Connection con = source.getConnection(); PreparedStatement ps = con.prepareStatement(
+                "ALTER TABLE " + table + " ADD COLUMN auto_sell TINYINT NOT NULL DEFAULT 0")) {
+            ps.execute();
+        } catch (Exception ignored) {}
     }
 
     public CompletableFuture<PlayerStats> load(UUID uuid) {
         return CompletableFuture.supplyAsync(() -> {
             try (Connection con = source.getConnection();
-                 PreparedStatement ps = con.prepareStatement("SELECT items_sold, money_earned FROM " + table + " WHERE uuid=?")) {
+                 PreparedStatement ps = con.prepareStatement("SELECT items_sold, money_earned, auto_sell FROM " + table + " WHERE uuid=?")) {
                 ps.setString(1, uuid.toString());
                 try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) return new PlayerStats(rs.getLong(1), rs.getDouble(2));
+                    if (rs.next()) return new PlayerStats(rs.getLong(1), rs.getDouble(2), rs.getInt(3) != 0);
                 }
             } catch (Exception e) {
                 plugin.getLogger().warning("DB load failed: " + e.getMessage());
             }
-            return new PlayerStats(0, 0);
+            return new PlayerStats(0, 0, plugin.getConfigManager().isAutoSellDefault());
         });
     }
 
@@ -95,18 +100,19 @@ public class DatabaseManager {
 
     public void save(UUID uuid, String name, PlayerStats stats) {
         String sql = switch (type) {
-            case SQLITE, H2 -> "MERGE INTO " + table + " (uuid,name,items_sold,money_earned) KEY(uuid) VALUES(?,?,?,?)";
-            default -> "INSERT INTO " + table + " (uuid,name,items_sold,money_earned) VALUES(?,?,?,?) " +
-                    "ON DUPLICATE KEY UPDATE name=VALUES(name), items_sold=VALUES(items_sold), money_earned=VALUES(money_earned)";
+            case SQLITE, H2 -> "MERGE INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell) KEY(uuid) VALUES(?,?,?,?,?)";
+            default -> "INSERT INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell) VALUES(?,?,?,?,?) " +
+                    "ON DUPLICATE KEY UPDATE name=VALUES(name), items_sold=VALUES(items_sold), money_earned=VALUES(money_earned), auto_sell=VALUES(auto_sell)";
         };
         String finalSql = type == DatabaseType.SQLITE
-                ? "INSERT OR REPLACE INTO " + table + " (uuid,name,items_sold,money_earned) VALUES(?,?,?,?)"
+                ? "INSERT OR REPLACE INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell) VALUES(?,?,?,?,?)"
                 : sql;
         try (Connection con = source.getConnection(); PreparedStatement ps = con.prepareStatement(finalSql)) {
             ps.setString(1, uuid.toString());
             ps.setString(2, name);
             ps.setLong(3, stats.itemsSold());
             ps.setDouble(4, stats.moneyEarned());
+            ps.setInt(5, stats.autoSell() ? 1 : 0);
             ps.executeUpdate();
         } catch (Exception e) {
             plugin.getLogger().warning("DB save failed: " + e.getMessage());

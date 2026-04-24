@@ -1,6 +1,6 @@
 package it.onlynelchilling.ultrasell.database;
 
-public enum DatabaseType {
+enum DatabaseType {
     SQLITE("org.sqlite.JDBC"),
     H2("org.h2.Driver"),
     MYSQL("com.mysql.cj.jdbc.Driver"),
@@ -10,9 +10,9 @@ public enum DatabaseType {
 
     DatabaseType(String driver) { this.driver = driver; }
 
-    public String driver() { return driver; }
+    String driver() { return driver; }
 
-    public static DatabaseType from(String s) {
+    static DatabaseType from(String s) {
         if (s == null) return SQLITE;
         try { return valueOf(s.trim().toUpperCase()); }
         catch (IllegalArgumentException e) { return SQLITE; }

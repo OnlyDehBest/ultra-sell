@@ -21,7 +21,7 @@ public final class CachedPlayer {
         this.stats = stats;
     }
 
-    public static double resolveMultiplier(UltraSell plugin, Player p) {
+    static double resolveMultiplier(UltraSell plugin, Player p) {
         ConfigManager cfg = plugin.getConfigManager();
         if (!cfg.isMultiplierEnabled() || cfg.getMultiplierEntries().isEmpty()) return 1.0;
         for (ConfigManager.MultiplierEntry e : cfg.getMultiplierEntries())

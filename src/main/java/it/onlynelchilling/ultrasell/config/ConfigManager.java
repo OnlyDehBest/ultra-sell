@@ -34,7 +34,11 @@ public class ConfigManager {
     private String worthLoreFormat;
     private boolean metricsEnabled;
 
-    private final Map<String, String> messages = new HashMap<>();
+    private boolean autoSellEnabled;
+    private int autoSellIntervalSeconds;
+    private boolean autoSellDefault;
+    private boolean autoSellIgnoreHand;
+    private boolean autoSellNotify;
 
     public ConfigManager(UltraSell plugin) {
         this.plugin = plugin;
@@ -46,7 +50,6 @@ public class ConfigManager {
         loadPrices();
         loadMultipliers(c);
         loadGUISettings(c);
-        loadMessages(c);
         loadSettings(c);
         smartCache.clear();
     }
@@ -109,13 +112,6 @@ public class ConfigManager {
         decorations = List.copyOf(items);
     }
 
-    private void loadMessages(FileConfiguration c) {
-        messages.clear();
-        ConfigurationSection s = c.getConfigurationSection("messages");
-        if (s == null) return;
-        for (String key : s.getKeys(true))
-            if (s.isString(key)) messages.put(key, s.getString(key));
-    }
 
     private void loadSettings(FileConfiguration c) {
         try {
@@ -132,6 +128,11 @@ public class ConfigManager {
         worthLoreEnabled = c.getBoolean("worth-lore.enabled");
         worthLoreFormat = c.getString("worth-lore.format");
         metricsEnabled = c.getBoolean("settings.metrics", true);
+        autoSellEnabled = c.getBoolean("auto-sell.enabled", false);
+        autoSellIntervalSeconds = Math.max(1, c.getInt("auto-sell.interval-seconds", 10));
+        autoSellDefault = c.getBoolean("auto-sell.default-enabled", false);
+        autoSellIgnoreHand = c.getBoolean("auto-sell.ignore-hand", true);
+        autoSellNotify = c.getBoolean("auto-sell.notify", true);
     }
 
     private SoundEntry loadSound(FileConfiguration c, String path, Sound def, float dv, float dp) {
@@ -157,14 +158,6 @@ public class ConfigManager {
         load();
     }
 
-    public String getMessage(String key) { return messages.getOrDefault(key, ""); }
-
-    public String getMessage(String key, Object... repl) {
-        String m = getMessage(key);
-        for (int i = 0; i < repl.length - 1; i += 2)
-            m = m.replace(String.valueOf(repl[i]), String.valueOf(repl[i + 1]));
-        return m;
-    }
 
     public Map<Material, Double> getPrices() { return prices; }
     public List<MultiplierEntry> getMultiplierEntries() { return multiplierEntries; }
@@ -177,6 +170,12 @@ public class ConfigManager {
     public boolean isWorthLoreEnabled() { return worthLoreEnabled; }
     public String getWorthLoreFormat() { return worthLoreFormat; }
     public boolean isMetricsEnabled() { return metricsEnabled; }
+
+    public boolean isAutoSellEnabled() { return autoSellEnabled; }
+    public int getAutoSellIntervalSeconds() { return autoSellIntervalSeconds; }
+    public boolean isAutoSellDefault() { return autoSellDefault; }
+    public boolean isAutoSellIgnoreHand() { return autoSellIgnoreHand; }
+    public boolean isAutoSellNotify() { return autoSellNotify; }
 
     public record MultiplierEntry(double multiplier, String permission) {}
     public record DecorationItem(Material material, String name, List<String> lore, List<Integer> slots) {}

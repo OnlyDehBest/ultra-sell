@@ -26,12 +26,27 @@ public class SellCommand extends BaseCommand {
         plugin.getSellGUISystem().sellHand(player);
     }
 
+    @Subcommand("auto")
+    @CommandPermission("ultrasell.auto")
+    public void onAuto(Player player) {
+        if (!plugin.getConfigManager().isAutoSellEnabled()) {
+            plugin.getMessageUtils().send(player, "auto-sell-disabled-global");
+            return;
+        }
+        var stats = plugin.getPlayerCache().get(player).stats();
+        boolean now = !stats.autoSell();
+        stats.setAutoSell(now);
+        plugin.getMessageUtils().send(player, now ? "auto-sell-enabled" : "auto-sell-disabled");
+    }
+
     @Subcommand("reload")
     @CommandPermission("ultrasell.reload")
     public void onReload(CommandSender sender) {
         plugin.getConfigManager().reload();
+        plugin.getMessageManager().reload();
         plugin.getSellGUISystem().rebuildGUICache();
         plugin.rebuildWorthLoreCache();
+        plugin.getAutoSellTask().start();
 
         if (sender instanceof Player player) {
             plugin.getMessageUtils().send(player, "reload-success");

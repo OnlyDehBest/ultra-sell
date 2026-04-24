@@ -17,6 +17,7 @@ public enum ConfigType {
 
     CONFIG("config"),
     PRICES("prices"),
+    MESSAGES("messages"),
     DATABASE("database");
 
     private static JavaPlugin plugin;

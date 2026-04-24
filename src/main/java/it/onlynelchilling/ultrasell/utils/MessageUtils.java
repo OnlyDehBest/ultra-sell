@@ -1,7 +1,7 @@
 package it.onlynelchilling.ultrasell.utils;
 
 import it.onlynelchilling.ultrasell.UltraSell;
-import it.onlynelchilling.ultrasell.config.ConfigManager;
+import it.onlynelchilling.ultrasell.message.MessageManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -136,9 +136,9 @@ public final class MessageUtils {
     }
 
     public void send(Player player, String path, Object... replacements) {
-        ConfigManager cfg = plugin.getConfigManager();
-        Component prefix = deserialize(cfg.getMessage("prefix"));
-        String raw = cfg.getMessage(path, replacements);
+        MessageManager mm = plugin.getMessageManager();
+        Component prefix = deserialize(mm.get("prefix"));
+        String raw = mm.get(path, replacements);
         Component message = deserialize(raw);
 
         Component combined = Component.empty()
@@ -151,7 +151,7 @@ public final class MessageUtils {
     }
 
     public void sendActionBar(Player player, String path, Object... replacements) {
-        String raw = plugin.getConfigManager().getMessage(path, replacements);
+        String raw = plugin.getMessageManager().get(path, replacements);
         Component component = Component.empty()
                 .decoration(TextDecoration.BOLD, false)
                 .decoration(TextDecoration.ITALIC, false)

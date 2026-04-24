@@ -1,0 +1,20 @@
+# ========================================
+#          UltraSell Messages
+# ========================================
+# Placeholder support: {amount}, {total}, {currency}, {multiplier}, {count}
+
+prefix: "&6UltraSell &8• "
+empty: "&cYou have not inserted any items!"
+sold-success: "&aYou sold &e{amount} &aitems for &e{total} {currency}&a!"
+sold-success-multiplier: "&aYou sold &e{amount} &aitems for &e{total} {currency} &a(&7x{multiplier} Multiplier&a)!"
+unsellable-items: "&e{count} &cunsellable items have been returned."
+no-sellable-items: "&cNone of the &e{count} &cinserted items are sellable."
+reload-success: "&aConfiguration reloaded successfully!"
+hand-air: "&cYou are not holding any item!"
+hand-not-sellable: "&cThe item in your hand is not sellable."
+auto-sell-enabled: "&7Auto-sell &a&lenabled&7!"
+auto-sell-disabled: "&7Auto-sell &c&ldisabled&7!"
+auto-sell-disabled-global: "&cAuto-sell is not enabled on this server."
+auto-sell-success: "&a+{total} {currency} &7(&e{amount} &7items auto-sold)"
+auto-sell-success-multiplier: "&a+{total} {currency} &7(&e{amount} &7items &8• &7x{multiplier}&7)"
+
