@@ -40,9 +40,10 @@ public final class SchedulerUtil {
                 Class<?> scheduledTask = Class.forName("io.papermc.paper.threadedregions.scheduler.ScheduledTask");
 
                 GET_ASYNC_SCHEDULER = lookup.findVirtual(Bukkit.getServer().getClass(), "getAsyncScheduler", MethodType.methodType(asyncScheduler));
+
                 ASYNC_RUN_NOW = lookup.findVirtual(asyncScheduler, "runNow", MethodType.methodType(scheduledTask, Plugin.class, Consumer.class));
                 GET_GLOBAL_SCHEDULER = lookup.findVirtual(Bukkit.getServer().getClass(), "getGlobalRegionScheduler", MethodType.methodType(globalScheduler));
-                GLOBAL_RUN = lookup.findVirtual(globalScheduler, "run", MethodType.methodType(void.class, Plugin.class, Consumer.class));
+                GLOBAL_RUN = lookup.findVirtual(globalScheduler, "run", MethodType.methodType(scheduledTask, Plugin.class, Consumer.class));
                 GLOBAL_RUN_AT_FIXED_RATE = lookup.findVirtual(globalScheduler, "runAtFixedRate", MethodType.methodType(scheduledTask, Plugin.class, Consumer.class, long.class, long.class));
                 ENTITY_GET_SCHEDULER = lookup.findVirtual(Entity.class, "getScheduler", MethodType.methodType(entityScheduler));
                 ENTITY_RUN = lookup.findVirtual(entityScheduler, "run", MethodType.methodType(scheduledTask, Plugin.class, Consumer.class, Runnable.class));
@@ -128,4 +129,3 @@ public final class SchedulerUtil {
         }
     }
 }
-
