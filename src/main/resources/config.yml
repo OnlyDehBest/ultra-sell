@@ -54,10 +54,16 @@ sounds:
 # Automatically sell sellable items from the player's inventory at a fixed interval.
 # Items with custom names, enchantments or NBT are ignored for safety.
 auto-sell:
-  enabled: false
+  enabled: true
   interval-seconds: 10 # Interval in seconds between auto-sell checks
   default-enabled: false
   ignore-hand: true
+  notify: true
+
+# Automatically sell items when the player picks them up from the ground.
+# Items with custom names, enchantments or NBT are ignored for safety.
+auto-pickup:
+  enabled: true
   notify: true
 
 worth-lore:

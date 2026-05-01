@@ -40,6 +40,9 @@ public class ConfigManager {
     private boolean autoSellIgnoreHand;
     private boolean autoSellNotify;
 
+    private boolean autoPickupEnabled;
+    private boolean autoPickupNotify;
+
     public ConfigManager(UltraSell plugin) {
         this.plugin = plugin;
         load();
@@ -133,6 +136,8 @@ public class ConfigManager {
         autoSellDefault = c.getBoolean("auto-sell.default-enabled", false);
         autoSellIgnoreHand = c.getBoolean("auto-sell.ignore-hand", true);
         autoSellNotify = c.getBoolean("auto-sell.notify", true);
+        autoPickupEnabled = c.getBoolean("auto-pickup.enabled", false);
+        autoPickupNotify = c.getBoolean("auto-pickup.notify", true);
     }
 
     private SoundEntry loadSound(FileConfiguration c, String path, Sound def, float dv, float dp) {
@@ -176,6 +181,8 @@ public class ConfigManager {
     public boolean isAutoSellDefault() { return autoSellDefault; }
     public boolean isAutoSellIgnoreHand() { return autoSellIgnoreHand; }
     public boolean isAutoSellNotify() { return autoSellNotify; }
+    public boolean isAutoPickupEnabled() { return autoPickupEnabled; }
+    public boolean isAutoPickupNotify() { return autoPickupNotify; }
 
     public record MultiplierEntry(double multiplier, String permission) {}
     public record DecorationItem(Material material, String name, List<String> lore, List<Integer> slots) {}

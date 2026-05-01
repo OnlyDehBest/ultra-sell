@@ -10,11 +10,13 @@ import it.onlynelchilling.ultrasell.database.DatabaseManager;
 import it.onlynelchilling.ultrasell.gui.SellGUISystem;
 import it.onlynelchilling.ultrasell.hooks.PacketEventsHook;
 import it.onlynelchilling.ultrasell.hooks.VaultHook;
+import it.onlynelchilling.ultrasell.listeners.AutoPickupListener;
 import it.onlynelchilling.ultrasell.listeners.PlayerJoinListener;
 import it.onlynelchilling.ultrasell.listeners.SellGUIListener;
 import it.onlynelchilling.ultrasell.message.MessageManager;
 import it.onlynelchilling.ultrasell.utils.MessageUtils;
 import it.onlynelchilling.ultrasell.utils.NMSUtil;
+import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.MultiLineChart;
 import org.bukkit.Bukkit;
@@ -69,6 +71,7 @@ public final class UltraSell extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new SellGUIListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+        getServer().getPluginManager().registerEvents(new AutoPickupListener(this), this);
 
         if (configManager.isWorthLoreEnabled()
                 && getServer().getPluginManager().getPlugin("packetevents") != null) {
@@ -79,7 +82,7 @@ public final class UltraSell extends JavaPlugin {
             }
         }
 
-        if (configManager.isMetricsEnabled()) Bukkit.getScheduler().runTaskAsynchronously(this, this::bstats);
+        if (configManager.isMetricsEnabled()) SchedulerUtil.runAsync(this, this::bstats);
 
         autoSellTask = new AutoSellTask(this);
         autoSellTask.start();

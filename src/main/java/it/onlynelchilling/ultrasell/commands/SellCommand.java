@@ -39,6 +39,19 @@ public class SellCommand extends BaseCommand {
         plugin.getMessageUtils().send(player, now ? "auto-sell-enabled" : "auto-sell-disabled");
     }
 
+    @Subcommand("pickup")
+    @CommandPermission("ultrasell.pickup")
+    public void onPickup(Player player) {
+        if (!plugin.getConfigManager().isAutoPickupEnabled()) {
+            plugin.getMessageUtils().send(player, "auto-pickup-disabled-global");
+            return;
+        }
+        var stats = plugin.getPlayerCache().get(player).stats();
+        boolean now = !stats.autoPickup();
+        stats.setAutoPickup(now);
+        plugin.getMessageUtils().send(player, now ? "auto-pickup-enabled" : "auto-pickup-disabled");
+    }
+
     @Subcommand("reload")
     @CommandPermission("ultrasell.reload")
     public void onReload(CommandSender sender) {

@@ -7,6 +7,7 @@ import org.bukkit.plugin.Plugin;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public final class SchedulerUtil {
@@ -68,7 +69,7 @@ public final class SchedulerUtil {
                 throw new RuntimeException(e);
             }
         } else {
-            Bukkit.getScheduler().runTaskAsynchronously(plugin, task);
+            CompletableFuture.runAsync(task);
         }
     }
 
@@ -106,7 +107,10 @@ public final class SchedulerUtil {
                 Object scheduler = GET_GLOBAL_SCHEDULER.invoke(Bukkit.getServer());
                 Object scheduled = GLOBAL_RUN_AT_FIXED_RATE.invoke(scheduler, plugin, (Consumer<?>) t -> task.run(), d, p);
                 return () -> {
-                    try { SCHEDULED_TASK_CANCEL.invoke(scheduled); } catch (Throwable ignored) {}
+                    try {
+                        SCHEDULED_TASK_CANCEL.invoke(scheduled);
+                    } catch (Throwable ignored) {
+                    }
                 };
             } catch (Throwable e) {
                 throw new RuntimeException(e);
