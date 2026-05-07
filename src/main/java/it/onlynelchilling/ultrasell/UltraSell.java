@@ -71,7 +71,9 @@ public final class UltraSell extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new SellGUIListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
-        getServer().getPluginManager().registerEvents(new AutoPickupListener(this), this);
+        if (configManager.isAutoPickupEnabled()) {
+            getServer().getPluginManager().registerEvents(new AutoPickupListener(this), this);
+        }
 
         if (configManager.isWorthLoreEnabled()
                 && getServer().getPluginManager().getPlugin("packetevents") != null) {

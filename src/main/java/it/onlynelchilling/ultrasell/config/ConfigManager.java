@@ -1,6 +1,8 @@
 package it.onlynelchilling.ultrasell.config;
 
 import it.onlynelchilling.ultrasell.UltraSell;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -9,7 +11,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ConfigManager {
 
@@ -25,7 +26,7 @@ public class ConfigManager {
 
     private DecimalFormat priceFormat;
     private DecimalFormat integerPriceFormat;
-    private final Map<Double, String> smartCache = new ConcurrentHashMap<>();
+    private final Cache<Double, String> smartCache = Caffeine.newBuilder().maximumSize(4096).build();
 
     private SoundEntry sellSuccessSound;
     private SoundEntry sellFailSound;
@@ -54,7 +55,7 @@ public class ConfigManager {
         loadMultipliers(c);
         loadGUISettings(c);
         loadSettings(c);
-        smartCache.clear();
+        smartCache.invalidateAll();
     }
 
     private void loadPrices() {
@@ -154,7 +155,7 @@ public class ConfigManager {
     public String formatPrice(double p) { return priceFormat.format(p); }
 
     public String formatPriceSmart(double p) {
-        return smartCache.computeIfAbsent(p, k ->
+        return smartCache.get(p, k ->
                 k == (long) (double) k ? integerPriceFormat.format((long) (double) k) : priceFormat.format(k));
     }
 

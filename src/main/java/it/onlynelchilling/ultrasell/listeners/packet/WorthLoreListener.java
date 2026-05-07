@@ -31,6 +31,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 
 public class WorthLoreListener extends SimplePacketListenerAbstract implements Listener {
 
@@ -41,9 +43,9 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
     private final UltraSell plugin;
 
     private final Map<String, Double> stringPriceCache = new ConcurrentHashMap<>();
-    private final Map<ItemType, Double> resolvedPriceCache = new ConcurrentHashMap<>();
-    private final Map<ItemType, Boolean> shulkerCheckCache = new ConcurrentHashMap<>();
-    private final Map<Double, Component> worthLineCache = new ConcurrentHashMap<>();
+    private final Cache<ItemType, Double> resolvedPriceCache = Caffeine.newBuilder().maximumSize(2048).build();
+    private final Cache<ItemType, Boolean> shulkerCheckCache = Caffeine.newBuilder().maximumSize(64).build();
+    private final Cache<Double, Component> worthLineCache = Caffeine.newBuilder().maximumSize(4096).build();
 
     private static final Set<String> SHULKER_NAMES = Set.of(
             "minecraft:shulker_box", "minecraft:white_shulker_box", "minecraft:orange_shulker_box",
@@ -63,9 +65,9 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
 
     public void rebuildPriceCache() {
         stringPriceCache.clear();
-        resolvedPriceCache.clear();
-        shulkerCheckCache.clear();
-        worthLineCache.clear();
+        resolvedPriceCache.invalidateAll();
+        shulkerCheckCache.invalidateAll();
+        worthLineCache.invalidateAll();
 
         if (plugin.getConfigManager().isWorthLoreEnabled()) {
             for (Map.Entry<Material, Double> entry : plugin.getConfigManager().getPrices().entrySet()) {
@@ -238,7 +240,7 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
 
     private boolean isShulkerBox(ItemType type) {
         if (type == null) return false;
-        return shulkerCheckCache.computeIfAbsent(type,
+        return shulkerCheckCache.get(type,
                 t -> SHULKER_NAMES.contains(t.getName().toString()));
     }
 
@@ -264,12 +266,12 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
 
     private double getPrice(ItemType type) {
         if (type == null) return 0;
-        return resolvedPriceCache.computeIfAbsent(type,
+        return resolvedPriceCache.get(type,
                 t -> stringPriceCache.getOrDefault(t.getName().toString(), 0.0));
     }
 
     private Component buildWorthLine(double total) {
-        return worthLineCache.computeIfAbsent(total, t -> {
+        return worthLineCache.get(total, t -> {
             ConfigManager cfg = plugin.getConfigManager();
             String format = cfg.getWorthLoreFormat()
                     .replace("{price}", cfg.formatPriceSmart(t))

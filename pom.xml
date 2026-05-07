@@ -122,6 +122,11 @@
             <version>3.4.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.2.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -147,6 +152,10 @@
                         <relocation>
                             <pattern>org.bstats</pattern>
                             <shadedPattern>it.onlynelchilling.ultrasell.libs.bstats</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.github.benmanes.caffeine</pattern>
+                            <shadedPattern>it.onlynelchilling.ultrasell.libs.caffeine</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
