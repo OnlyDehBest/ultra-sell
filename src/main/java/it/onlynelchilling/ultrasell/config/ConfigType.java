@@ -100,6 +100,8 @@ public enum ConfigType {
         config = YamlConfiguration.loadConfiguration(file);
     }
 
+    private static final String VERSION_KEY = "config-version";
+
     private void update() {
         InputStream resource = plugin.getResource(getPath());
         if (resource == null) return;
@@ -110,6 +112,11 @@ public enum ConfigType {
 
         config.setDefaults(defaults);
 
+        // isSet ignores defaults, so this reads only what is in the user's file
+        int defaultVersion = defaults.getInt(VERSION_KEY, -1);
+        int currentVersion = config.isSet(VERSION_KEY) ? config.getInt(VERSION_KEY) : -1;
+        if (defaultVersion != -1 && currentVersion == defaultVersion) return;
+
         boolean hasMissing = false;
 
         for (String key : defaults.getKeys(true)) {
@@ -119,6 +126,11 @@ public enum ConfigType {
                 config.set(key, defaults.get(key));
                 hasMissing = true;
             }
+        }
+
+        if (defaultVersion != -1 && currentVersion != defaultVersion) {
+            config.set(VERSION_KEY, defaultVersion);
+            hasMissing = true;
         }
 
         if (!hasMissing) return;

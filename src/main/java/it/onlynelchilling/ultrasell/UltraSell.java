@@ -13,7 +13,10 @@ import it.onlynelchilling.ultrasell.hooks.VaultHook;
 import it.onlynelchilling.ultrasell.listeners.AutoPickupListener;
 import it.onlynelchilling.ultrasell.listeners.PlayerJoinListener;
 import it.onlynelchilling.ultrasell.listeners.SellGUIListener;
+import it.onlynelchilling.ultrasell.listeners.SellWandListener;
 import it.onlynelchilling.ultrasell.message.MessageManager;
+import it.onlynelchilling.ultrasell.sell.SellService;
+import it.onlynelchilling.ultrasell.wand.SellWandManager;
 import it.onlynelchilling.ultrasell.utils.MessageUtils;
 import it.onlynelchilling.ultrasell.utils.NMSUtil;
 import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
@@ -35,6 +38,8 @@ public final class UltraSell extends JavaPlugin {
     private PlayerCache playerCache;
     private VaultHook vaultHook;
     private SellGUISystem sellGUISystem;
+    private SellService sellService;
+    private SellWandManager sellWandManager;
     private MessageUtils messageUtils;
     private Runnable worthLoreRebuilder;
     private AutoSellTask autoSellTask;
@@ -65,11 +70,14 @@ public final class UltraSell extends JavaPlugin {
         playerCache = new PlayerCache(this);
         Bukkit.getOnlinePlayers().forEach(p -> playerCache.loadAsync(p));
 
+        sellService = new SellService(this);
         sellGUISystem = new SellGUISystem(this);
+        sellWandManager = new SellWandManager(this);
 
         new BukkitCommandManager(this).registerCommand(new SellCommand(this));
 
         getServer().getPluginManager().registerEvents(new SellGUIListener(this), this);
+        getServer().getPluginManager().registerEvents(new SellWandListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         if (configManager.isAutoPickupEnabled()) {
             getServer().getPluginManager().registerEvents(new AutoPickupListener(this), this);
@@ -117,6 +125,8 @@ public final class UltraSell extends JavaPlugin {
     public PlayerCache getPlayerCache() { return playerCache; }
     public VaultHook getVaultHook() { return vaultHook; }
     public SellGUISystem getSellGUISystem() { return sellGUISystem; }
+    public SellService getSellService() { return sellService; }
+    public SellWandManager getSellWandManager() { return sellWandManager; }
     public MessageUtils getMessageUtils() { return messageUtils; }
     public AutoSellTask getAutoSellTask() { return autoSellTask; }
 }

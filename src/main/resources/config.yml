@@ -34,7 +34,7 @@ gui:
 # locale: Language tag for number formatting
 #   Examples: "en-US", "it-IT", "de-DE", "fr-FR", "pt-BR"
 settings:
-  # Enable anonymous statistics via bStats
+  # Enable anonymous statistics via bStats (no have impact on server performance, see https://bstats.org/ for details)
   metrics: true
   price-format: "#,##0.00"
   price-locale: "en-US"
@@ -66,10 +66,28 @@ auto-pickup:
   enabled: true
   notify: true
 
+# Sell wand: right-click a container (chest, barrel, shulker...) to sell
+# its sellable contents without opening it.
+sell-wand:
+  enabled: true
+  material: "BLAZE_ROD"
+  name: "&6&lꜱᴇʟʟ ᴡᴀɴᴅ"
+  lore:
+    - ""
+    - "&6&l｜&fRight-click a &acontainer"
+    - "&6&l｜&fto sell its contents."
+    - ""
+    - "&7Uses: &e{uses}"
+  glow: true
+  default-uses: 100
+  cooldown-ms: 500 # Minimum delay between two wand uses
+
+# Display the estimated worth of items in the lore when hovering over them in the inventory.
 worth-lore:
   enabled: true
   format: "&7Worth: &a{price}$"
 
+# Add multipliers to the sell price based on player permissions.
 sell-multipliers:
   enabled: true
   multipliers:
@@ -78,3 +96,4 @@ sell-multipliers:
     "2.0": "ultrasell.multiplier.mvp"
     "1.5": "ultrasell.multiplier.vip"
 
+config-version: 1  #do not change this

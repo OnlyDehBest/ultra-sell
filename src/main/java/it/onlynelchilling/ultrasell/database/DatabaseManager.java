@@ -33,7 +33,9 @@ public class DatabaseManager {
         HikariConfig hc = new HikariConfig();
         hc.setDriverClassName(type.driver());
         hc.setJdbcUrl(buildUrl(c));
-        hc.setMaximumPoolSize(Math.max(1, c.getInt("database.pool-size", 6)));
+
+        int poolSize = type == DatabaseType.SQLITE ? 1 : Math.max(1, c.getInt("database.pool-size"));
+        hc.setMaximumPoolSize(poolSize);
         hc.setPoolName("UltraSell-Pool");
         if (type == DatabaseType.MYSQL || type == DatabaseType.MARIADB) {
             hc.setUsername(c.getString("database.user"));
@@ -50,10 +52,10 @@ public class DatabaseManager {
     }
 
     private String buildUrl(FileConfiguration c) {
-        String host = c.getString("database.host", "localhost");
-        int port = c.getInt("database.port", 3306);
-        String name = c.getString("database.name", "ultrasell");
-        String file = c.getString("database.file", "data");
+        String host = c.getString("database.host");
+        int port = c.getInt("database.port");
+        String name = c.getString("database.name");
+        String file = c.getString("database.file");
         File folder = plugin.getDataFolder();
         return switch (type) {
             case SQLITE -> "jdbc:sqlite:" + new File(folder, file + ".db").getAbsolutePath();
@@ -104,15 +106,31 @@ public class DatabaseManager {
     }
 
     public void save(UUID uuid, String name, PlayerStats stats) {
+        try {
+            write(uuid, name, stats);
+        } catch (Exception e) {
+            if (!isStaleFile(e)) {
+                plugin.getLogger().warning("DB save failed: " + e.getMessage());
+                return;
+            }
+            plugin.getLogger().warning("DB file changed on disk, reconnecting...");
+            softEvictConnections();
+            try {
+                write(uuid, name, stats);
+            } catch (Exception retry) {
+                plugin.getLogger().warning("DB save failed after reconnect: " + retry.getMessage());
+            }
+        }
+    }
+
+    private void write(UUID uuid, String name, PlayerStats stats) throws Exception {
         String sql = switch (type) {
-            case SQLITE, H2 -> "MERGE INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell,auto_pickup) KEY(uuid) VALUES(?,?,?,?,?,?)";
+            case SQLITE -> "INSERT OR REPLACE INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell,auto_pickup) VALUES(?,?,?,?,?,?)";
+            case H2 -> "MERGE INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell,auto_pickup) KEY(uuid) VALUES(?,?,?,?,?,?)";
             default -> "INSERT INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell,auto_pickup) VALUES(?,?,?,?,?,?) " +
                     "ON DUPLICATE KEY UPDATE name=VALUES(name), items_sold=VALUES(items_sold), money_earned=VALUES(money_earned), auto_sell=VALUES(auto_sell), auto_pickup=VALUES(auto_pickup)";
         };
-        String finalSql = type == DatabaseType.SQLITE
-                ? "INSERT OR REPLACE INTO " + table + " (uuid,name,items_sold,money_earned,auto_sell,auto_pickup) VALUES(?,?,?,?,?,?)"
-                : sql;
-        try (Connection con = source.getConnection(); PreparedStatement ps = con.prepareStatement(finalSql)) {
+        try (Connection con = source.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, uuid.toString());
             ps.setString(2, name);
             ps.setLong(3, stats.itemsSold());
@@ -120,9 +138,20 @@ public class DatabaseManager {
             ps.setInt(5, stats.autoSell() ? 1 : 0);
             ps.setInt(6, stats.autoPickup() ? 1 : 0);
             ps.executeUpdate();
-        } catch (Exception e) {
-            plugin.getLogger().warning("DB save failed: " + e.getMessage());
         }
+    }
+
+    private boolean isStaleFile(Exception e) {
+        String msg = String.valueOf(e.getMessage());
+        return msg.contains("SQLITE_READONLY_DBMOVED")
+                || msg.contains("SQLITE_READONLY")
+                || msg.contains("attempt to write a readonly database");
+    }
+
+    private void softEvictConnections() {
+        try {
+            source.getHikariPoolMXBean().softEvictConnections();
+        } catch (Exception ignored) {}
     }
 
     public void close() {

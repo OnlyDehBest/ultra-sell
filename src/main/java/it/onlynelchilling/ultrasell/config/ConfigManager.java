@@ -44,6 +44,8 @@ public class ConfigManager {
     private boolean autoPickupEnabled;
     private boolean autoPickupNotify;
 
+    private SellWandSettings sellWand;
+
     public ConfigManager(UltraSell plugin) {
         this.plugin = plugin;
         load();
@@ -131,14 +133,36 @@ public class ConfigManager {
         sellFailSound = loadSound(c, "sounds.sell-fail", Sound.ENTITY_VILLAGER_NO, 0.7f, 0.8f);
         worthLoreEnabled = c.getBoolean("worth-lore.enabled");
         worthLoreFormat = c.getString("worth-lore.format");
-        metricsEnabled = c.getBoolean("settings.metrics", true);
-        autoSellEnabled = c.getBoolean("auto-sell.enabled", false);
-        autoSellIntervalSeconds = Math.max(1, c.getInt("auto-sell.interval-seconds", 10));
-        autoSellDefault = c.getBoolean("auto-sell.default-enabled", false);
-        autoSellIgnoreHand = c.getBoolean("auto-sell.ignore-hand", true);
-        autoSellNotify = c.getBoolean("auto-sell.notify", true);
-        autoPickupEnabled = c.getBoolean("auto-pickup.enabled", false);
-        autoPickupNotify = c.getBoolean("auto-pickup.notify", true);
+        metricsEnabled = c.getBoolean("settings.metrics");
+        autoSellEnabled = c.getBoolean("auto-sell.enabled");
+        autoSellIntervalSeconds = Math.max(1, c.getInt("auto-sell.interval-seconds"));
+        autoSellDefault = c.getBoolean("auto-sell.default-enabled");
+        autoSellIgnoreHand = c.getBoolean("auto-sell.ignore-hand");
+        autoSellNotify = c.getBoolean("auto-sell.notify");
+        autoPickupEnabled = c.getBoolean("auto-pickup.enabled");
+        autoPickupNotify = c.getBoolean("auto-pickup.notify");
+        loadSellWand(c);
+    }
+
+    private void loadSellWand(FileConfiguration c) {
+        Material material = Material.BLAZE_ROD;
+        String mat = c.getString("sell-wand.material");
+        if (mat != null) {
+            try {
+                material = Material.valueOf(mat.toUpperCase(Locale.ROOT));
+            } catch (IllegalArgumentException e) {
+                plugin.getLogger().warning("Unknown sell-wand material: " + mat);
+            }
+        }
+        sellWand = new SellWandSettings(
+                c.getBoolean("sell-wand.enabled", false),
+                material,
+                c.getString("sell-wand.name", "&6&lSell Wand"),
+                List.copyOf(c.getStringList("sell-wand.lore")),
+                c.getBoolean("sell-wand.glow", true),
+                Math.max(0L, c.getLong("sell-wand.cooldown-ms")),
+                Math.max(1, c.getInt("sell-wand.default-uses"))
+        );
     }
 
     private SoundEntry loadSound(FileConfiguration c, String path, Sound def, float dv, float dp) {
@@ -184,9 +208,17 @@ public class ConfigManager {
     public boolean isAutoSellNotify() { return autoSellNotify; }
     public boolean isAutoPickupEnabled() { return autoPickupEnabled; }
     public boolean isAutoPickupNotify() { return autoPickupNotify; }
+    public SellWandSettings getSellWand() { return sellWand; }
 
     public record MultiplierEntry(double multiplier, String permission) {}
     public record DecorationItem(Material material, String name, List<String> lore, List<Integer> slots) {}
-    public record SoundEntry(Sound sound, float volume, float pitch) {}
+    public record SellWandSettings(boolean enabled, Material material, String name, List<String> lore,
+                                   boolean glow, long cooldownMillis, int defaultUses) {}
+
+    public record SoundEntry(Sound sound, float volume, float pitch) {
+        public void play(org.bukkit.entity.Player player) {
+            player.playSound(player.getLocation(), sound, volume, pitch);
+        }
+    }
 }
 

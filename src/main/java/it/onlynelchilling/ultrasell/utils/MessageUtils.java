@@ -54,6 +54,9 @@ public final class MessageUtils {
     private final UltraSell plugin;
     private final MiniMessage miniMessage;
 
+    private String cachedPrefixRaw;
+    private Component cachedPrefix = Component.empty();
+
     public MessageUtils(UltraSell plugin) {
         this.plugin = plugin;
         this.miniMessage = MiniMessage.miniMessage();
@@ -137,17 +140,25 @@ public final class MessageUtils {
 
     public void send(Player player, String path, Object... replacements) {
         MessageManager mm = plugin.getMessageManager();
-        Component prefix = deserialize(mm.get("prefix"));
         String raw = mm.get(path, replacements);
         Component message = deserialize(raw);
 
         Component combined = Component.empty()
                 .decoration(TextDecoration.BOLD, false)
                 .decoration(TextDecoration.ITALIC, false)
-                .append(prefix)
+                .append(prefix(mm))
                 .append(message);
 
         NMSUtil.sendMessage(player, combined);
+    }
+
+    private Component prefix(MessageManager mm) {
+        String raw = mm.get("prefix");
+        if (!raw.equals(cachedPrefixRaw)) {
+            cachedPrefixRaw = raw;
+            cachedPrefix = deserialize(raw);
+        }
+        return cachedPrefix;
     }
 
     public void sendActionBar(Player player, String path, Object... replacements) {

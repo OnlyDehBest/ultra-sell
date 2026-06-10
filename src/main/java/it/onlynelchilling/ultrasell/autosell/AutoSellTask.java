@@ -4,7 +4,7 @@ import it.onlynelchilling.ultrasell.UltraSell;
 import it.onlynelchilling.ultrasell.cache.CachedPlayer;
 import it.onlynelchilling.ultrasell.config.ConfigManager;
 import it.onlynelchilling.ultrasell.config.ConfigManager.SoundEntry;
-import it.onlynelchilling.ultrasell.utils.MessageUtils;
+import it.onlynelchilling.ultrasell.sell.SellService;
 import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import java.util.Locale;
 import java.util.Map;
 
 public final class AutoSellTask {
@@ -75,29 +74,15 @@ public final class AutoSellTask {
 
         if (count == 0 || total <= 0) return;
 
-        double multiplier = plugin.getPlayerCache().multiplier(player);
-        double finalPrice = total * multiplier;
-
-        plugin.getVaultHook().depositPlayer(player, finalPrice);
-        plugin.getPlayerCache().get(player).stats().add(count, finalPrice);
+        SellService sell = plugin.getSellService();
+        SellService.Payment payment = sell.deposit(player, total, count);
 
         if (!cfg.isAutoSellNotify()) return;
 
-        MessageUtils msg = plugin.getMessageUtils();
-        String formatted = cfg.formatPrice(finalPrice);
-        String currency = plugin.getVaultHook().getCurrencyName();
-
-        if (multiplier > 1.0) {
-            String mul = String.format(Locale.US, "%.1f", multiplier);
-            msg.sendActionBar(player, "auto-sell-success-multiplier",
-                    "{amount}", count, "{total}", formatted, "{currency}", currency, "{multiplier}", mul);
-        } else {
-            msg.sendActionBar(player, "auto-sell-success",
-                    "{amount}", count, "{total}", formatted, "{currency}", currency);
-        }
+        sell.notify(player, payment, "auto-sell-success", false);
 
         SoundEntry sound = cfg.getSellSuccessSound();
-        if (sound != null) player.playSound(player.getLocation(), sound.sound(), sound.volume(), sound.pitch());
+        if (sound != null) sound.play(player);
     }
 }
 

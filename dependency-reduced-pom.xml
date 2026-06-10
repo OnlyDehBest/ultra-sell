@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>it.onlynelchilling</groupId>
   <artifactId>ultrasell</artifactId>
-  <version>1.1.0b</version>
+  <version>1.2.0b</version>
   <build>
     <plugins>
       <plugin>
@@ -34,6 +34,10 @@
             <relocation>
               <pattern>org.bstats</pattern>
               <shadedPattern>it.onlynelchilling.ultrasell.libs.bstats</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>com.github.benmanes.caffeine</pattern>
+              <shadedPattern>it.onlynelchilling.ultrasell.libs.caffeine</shadedPattern>
             </relocation>
           </relocations>
         </configuration>

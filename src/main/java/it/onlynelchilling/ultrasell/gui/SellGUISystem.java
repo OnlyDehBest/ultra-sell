@@ -4,6 +4,7 @@ import it.onlynelchilling.ultrasell.UltraSell;
 import it.onlynelchilling.ultrasell.config.ConfigManager;
 import it.onlynelchilling.ultrasell.config.ConfigManager.DecorationItem;
 import it.onlynelchilling.ultrasell.config.ConfigManager.SoundEntry;
+import it.onlynelchilling.ultrasell.sell.SellService;
 import it.onlynelchilling.ultrasell.utils.MessageUtils;
 import it.onlynelchilling.ultrasell.utils.SchedulerUtil;
 import org.bukkit.Bukkit;
@@ -133,11 +134,6 @@ public class SellGUISystem {
         handlePayment(player, result);
     }
 
-    public double getMultiplier(Player player) {
-        return plugin.getPlayerCache().multiplier(player);
-    }
-
-
     private SellResult processSellItems(List<ItemStack> items) {
         Map<Material, Double> prices = plugin.getConfigManager().getPrices();
 
@@ -217,9 +213,6 @@ public class SellGUISystem {
     }
 
     private void handlePayment(Player player, SellResult result) {
-        MessageUtils msg = plugin.getMessageUtils();
-        ConfigManager cfg = plugin.getConfigManager();
-
         if (result.totalPrice() <= 0) {
             if (!result.itemsReturned().isEmpty()) {
                 notifyNoSellableItems(player, result.itemsReturned().size());
@@ -227,46 +220,11 @@ public class SellGUISystem {
             return;
         }
 
-        double multiplier = getMultiplier(player);
-        double finalPrice = result.totalPrice() * multiplier;
+        SellService sell = plugin.getSellService();
+        SellService.Payment payment = sell.deposit(player, result.totalPrice(), result.totalItemsSold());
+        sell.notify(player, payment, "sold-success", true);
 
-        plugin.getVaultHook().depositPlayer(player, finalPrice);
-        plugin.getPlayerCache().get(player).stats().add(result.totalItemsSold(), finalPrice);
-
-        String formattedPrice = cfg.formatPrice(finalPrice);
-        String currencyName = plugin.getVaultHook().getCurrencyName();
-
-        if (multiplier > 1.0) {
-            String formattedMultiplier = String.format(Locale.US, "%.1f", multiplier);
-
-            msg.sendActionBar(player, "sold-success-multiplier",
-                    "{amount}", result.totalItemsSold(),
-                    "{total}", formattedPrice,
-                    "{currency}", currencyName,
-                    "{multiplier}", formattedMultiplier
-            );
-
-            msg.send(player, "sold-success-multiplier",
-                    "{amount}", result.totalItemsSold(),
-                    "{total}", formattedPrice,
-                    "{currency}", currencyName,
-                    "{multiplier}", formattedMultiplier
-            );
-        } else {
-            msg.sendActionBar(player, "sold-success",
-                    "{amount}", result.totalItemsSold(),
-                    "{total}", formattedPrice,
-                    "{currency}", currencyName
-            );
-
-            msg.send(player, "sold-success",
-                    "{amount}", result.totalItemsSold(),
-                    "{total}", formattedPrice,
-                    "{currency}", currencyName
-            );
-        }
-
-        playSound(player, cfg.getSellSuccessSound());
+        playSound(player, plugin.getConfigManager().getSellSuccessSound());
 
         if (!result.itemsReturned().isEmpty()) {
             notifyUnsellableItems(player, result.itemsReturned().size());
@@ -284,9 +242,7 @@ public class SellGUISystem {
     }
 
     private void playSound(Player player, SoundEntry sound) {
-        if (sound != null) {
-            player.playSound(player.getLocation(), sound.sound(), sound.volume(), sound.pitch());
-        }
+        if (sound != null) sound.play(player);
     }
 
     private record ShulkerResult(double price, int itemCount, List<ItemStack> unsellable) {}
