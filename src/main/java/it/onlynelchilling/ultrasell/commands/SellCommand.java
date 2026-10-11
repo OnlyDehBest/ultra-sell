@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Locale;
+
 @CommandAlias("sell")
 public class SellCommand extends BaseCommand {
 
@@ -55,9 +57,9 @@ public class SellCommand extends BaseCommand {
 
     @Subcommand("wand")
     @CommandPermission("ultrasell.wand.give")
-    @CommandCompletion("@players")
-    @Syntax("<player> [uses]")
-    public void onWand(CommandSender sender, OnlinePlayer target, @Optional Integer uses) {
+    @CommandCompletion("@players @nothing @wandtemplates")
+    @Syntax("<player> [uses] [template]")
+    public void onWand(CommandSender sender, OnlinePlayer target, @Optional Integer uses, @Optional String template) {
         var cfg = plugin.getConfigManager().getSellWand();
         Player receiver = target.getPlayer();
 
@@ -66,10 +68,23 @@ public class SellCommand extends BaseCommand {
             return;
         }
 
+        if (template != null && !cfg.templates().containsKey(template.toLowerCase(Locale.ROOT))) {
+            if (sender instanceof Player player) {
+                plugin.getMessageUtils().send(player, "wand-unknown-template",
+                        "{template}", template, "{templates}", String.join(", ", cfg.templates().keySet()));
+            } else {
+                sender.sendMessage("Unknown wand template: " + template
+                        + " (available: " + String.join(", ", cfg.templates().keySet()) + ")");
+            }
+            return;
+        }
+
         int wandUses = uses != null ? uses : cfg.defaultUses();
         if (wandUses == 0 || wandUses < -1) wandUses = cfg.defaultUses();
 
-        ItemStack wand = plugin.getSellWandManager().createWand(wandUses);
+        var wandTemplate = cfg.template(template);
+        ItemStack wand = plugin.getSellWandManager()
+                .createWand(wandTemplate.id(), wandUses, wandTemplate.defaultMultiplier());
         receiver.getInventory().addItem(wand).values()
                 .forEach(left -> receiver.getWorld().dropItem(receiver.getLocation(), left));
 

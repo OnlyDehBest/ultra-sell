@@ -30,4 +30,5 @@ wand-no-permission: "&cYou are not allowed to use the sell wand."
 wand-disabled-global: "&cThe sell wand is not enabled on this server."
 wand-received: "&aYou received a sell wand with &e{uses} &auses!"
 wand-given: "&aSell wand with &e{uses} &auses given to &e{player}&a."
+wand-unknown-template: "&cUnknown wand template &e{template}&c. Available: &e{templates}"
 

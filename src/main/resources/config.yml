@@ -79,8 +79,24 @@ sell-wand:
     - ""
     - "&7Uses: &e{uses}"
   glow: true
+  multiplier: 1.0 # Sell price multiplier applied by this wand ({multiplier} in lore)
   default-uses: 100
   cooldown-ms: 500 # Minimum delay between two wand uses
+  # Optional: define multiple wand types. If present, the flat keys above
+  # (material, name, lore, glow, multiplier) are ignored.
+  # default-template: "basic"
+  # templates:
+  #   basic:
+  #     material: "BLAZE_ROD"
+  #     name: "&6&lSell Wand"
+  #     lore: ["&7Uses: &e{uses}", "&7Multiplier: &ax{multiplier}"]
+  #     glow: true
+  #     multiplier: 1.0
+  #   pro:
+  #     material: "END_ROD"
+  #     name: "&b&lSell Wand Pro"
+  #     lore: ["&7Uses: &e{uses}", "&7Multiplier: &ax{multiplier}"]
+  #     multiplier: 1.5
 
 # Display the estimated worth of items in the lore when hovering over them in the inventory.
 worth-lore:

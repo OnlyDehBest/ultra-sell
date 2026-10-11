@@ -6,7 +6,7 @@
 
     <groupId>it.onlynelchilling</groupId>
     <artifactId>ultrasell</artifactId>
-    <version>1.2.0b</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
 
     <properties>

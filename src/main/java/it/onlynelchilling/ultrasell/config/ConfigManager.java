@@ -145,23 +145,61 @@ public class ConfigManager {
     }
 
     private void loadSellWand(FileConfiguration c) {
+        Map<String, SellWandTemplate> templates = new LinkedHashMap<>();
+
+        ConfigurationSection section = c.getConfigurationSection("sell-wand.templates");
+        if (section != null) {
+            for (String id : section.getKeys(false)) {
+                ConfigurationSection t = section.getConfigurationSection(id);
+                if (t == null) continue;
+                String key = id.toLowerCase(Locale.ROOT);
+                templates.put(key, readWandTemplate(key, t));
+            }
+        }
+
+        if (templates.isEmpty()) {
+            ConfigurationSection root = c.getConfigurationSection("sell-wand");
+            templates.put(SellWandSettings.DEFAULT_ID, root != null
+                    ? readWandTemplate(SellWandSettings.DEFAULT_ID, root)
+                    : new SellWandTemplate(SellWandSettings.DEFAULT_ID, Material.BLAZE_ROD,
+                            "&6&lSell Wand", List.of(), true, 1.0));
+        }
+
+        String defaultId = c.getString("sell-wand.default-template", "");
+        defaultId = defaultId.toLowerCase(Locale.ROOT);
+        if (!templates.containsKey(defaultId)) {
+            defaultId = templates.containsKey(SellWandSettings.DEFAULT_ID)
+                    ? SellWandSettings.DEFAULT_ID
+                    : templates.keySet().iterator().next();
+        }
+
+        sellWand = new SellWandSettings(
+                c.getBoolean("sell-wand.enabled", false),
+                Math.max(0L, c.getLong("sell-wand.cooldown-ms")),
+                Math.max(1, c.getInt("sell-wand.default-uses", 100)),
+                Collections.unmodifiableMap(templates),
+                defaultId
+        );
+    }
+
+    private SellWandTemplate readWandTemplate(String id, ConfigurationSection s) {
         Material material = Material.BLAZE_ROD;
-        String mat = c.getString("sell-wand.material");
+        String mat = s.getString("material");
         if (mat != null) {
             try {
                 material = Material.valueOf(mat.toUpperCase(Locale.ROOT));
             } catch (IllegalArgumentException e) {
-                plugin.getLogger().warning("Unknown sell-wand material: " + mat);
+                plugin.getLogger().warning("Unknown sell-wand material in template '" + id + "': " + mat);
             }
         }
-        sellWand = new SellWandSettings(
-                c.getBoolean("sell-wand.enabled", false),
+        double multiplier = s.getDouble("multiplier", 1.0);
+        return new SellWandTemplate(
+                id,
                 material,
-                c.getString("sell-wand.name", "&6&lSell Wand"),
-                List.copyOf(c.getStringList("sell-wand.lore")),
-                c.getBoolean("sell-wand.glow", true),
-                Math.max(0L, c.getLong("sell-wand.cooldown-ms")),
-                Math.max(1, c.getInt("sell-wand.default-uses"))
+                s.getString("name", "&6&lSell Wand"),
+                List.copyOf(s.getStringList("lore")),
+                s.getBoolean("glow", true),
+                multiplier > 0 ? multiplier : 1.0
         );
     }
 
@@ -212,8 +250,23 @@ public class ConfigManager {
 
     public record MultiplierEntry(double multiplier, String permission) {}
     public record DecorationItem(Material material, String name, List<String> lore, List<Integer> slots) {}
-    public record SellWandSettings(boolean enabled, Material material, String name, List<String> lore,
-                                   boolean glow, long cooldownMillis, int defaultUses) {}
+    public record SellWandSettings(boolean enabled, long cooldownMillis, int defaultUses,
+                                   Map<String, SellWandTemplate> templates, String defaultTemplateId) {
+        public static final String DEFAULT_ID = "default";
+
+        public SellWandTemplate defaultTemplate() {
+            return templates.get(defaultTemplateId);
+        }
+
+        public SellWandTemplate template(String id) {
+            if (id == null) return defaultTemplate();
+            SellWandTemplate t = templates.get(id.toLowerCase(Locale.ROOT));
+            return t != null ? t : defaultTemplate();
+        }
+    }
+
+    public record SellWandTemplate(String id, Material material, String name, List<String> lore,
+                                   boolean glow, double defaultMultiplier) {}
 
     public record SoundEntry(Sound sound, float volume, float pitch) {
         public void play(org.bukkit.entity.Player player) {

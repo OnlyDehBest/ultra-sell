@@ -74,7 +74,10 @@ public final class UltraSell extends JavaPlugin {
         sellGUISystem = new SellGUISystem(this);
         sellWandManager = new SellWandManager(this);
 
-        new BukkitCommandManager(this).registerCommand(new SellCommand(this));
+        BukkitCommandManager commandManager = new BukkitCommandManager(this);
+        commandManager.getCommandCompletions().registerCompletion("wandtemplates",
+                c -> configManager.getSellWand().templates().keySet());
+        commandManager.registerCommand(new SellCommand(this));
 
         getServer().getPluginManager().registerEvents(new SellGUIListener(this), this);
         getServer().getPluginManager().registerEvents(new SellWandListener(this), this);

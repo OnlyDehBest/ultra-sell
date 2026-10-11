@@ -23,11 +23,14 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,6 +42,7 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
     private static final String WORTH_MARKER = "ultrasell_worth";
 
     private final Set<UUID> pendingUpdates = ConcurrentHashMap.newKeySet();
+    private final Set<UUID> pluginGuiViewers = ConcurrentHashMap.newKeySet();
 
     private final UltraSell plugin;
 
@@ -95,11 +99,29 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
         scheduleUpdate(event.getPlayer());
     }
 
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    private void onInventoryOpen(InventoryOpenEvent event) {
+        if (!(event.getPlayer() instanceof Player player)) return;
+        if (event.getInventory().getHolder() instanceof PluginGui) {
+            pluginGuiViewers.add(player.getUniqueId());
+        } else {
+            pluginGuiViewers.remove(player.getUniqueId());
+        }
+    }
+
     @EventHandler
     private void onInventoryClose(InventoryCloseEvent event) {
         if (event.getPlayer() instanceof Player player) {
+            pluginGuiViewers.remove(player.getUniqueId());
             scheduleUpdate(player);
         }
+    }
+
+    @EventHandler
+    private void onQuit(PlayerQuitEvent event) {
+        UUID uuid = event.getPlayer().getUniqueId();
+        pluginGuiViewers.remove(uuid);
+        pendingUpdates.remove(uuid);
     }
 
     private void scheduleUpdate(Player player) {
@@ -285,11 +307,7 @@ public class WorthLoreListener extends SimplePacketListenerAbstract implements L
     }
 
     private boolean isPluginGui(Player player) {
-        try {
-            return player.getOpenInventory().getTopInventory().getHolder() instanceof PluginGui;
-        } catch (Throwable ignored) {
-            return false;
-        }
+        return pluginGuiViewers.contains(player.getUniqueId());
     }
 }
 
